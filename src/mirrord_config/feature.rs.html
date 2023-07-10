@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/config/src/feature.rs`."><title>feature.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fbd14db5c88ed452.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord_config" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (478cbb42b 2023-03-28)" data-search-js="search-bc5a112813b5d712.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../static.files/storage-d4a1a279bad1a0c0.js"></script><script defer src="../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-9ade54abd4bd73c8.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord_config/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/config/src/feature.rs`."><title>feature.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord_config" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c609da59d 2023-04-18)" data-search-js="search-e077946657036a58.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-7bfb4c59cc6bc502.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-905937fbbdc8e9ea.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-1a524efa7bd4ab32.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord_config/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -78,84 +78,92 @@
 <a href="#78" id="78">78</a>
 <a href="#79" id="79">79</a>
 <a href="#80" id="80">80</a>
-</pre><pre class="rust"><code><span class="kw">use </span>mirrord_config_derive::MirrordConfig;
+<a href="#81" id="81">81</a>
+<a href="#82" id="82">82</a>
+<a href="#83" id="83">83</a>
+<a href="#84" id="84">84</a>
+</pre></div><pre class="rust"><code><span class="kw">use </span>mirrord_analytics::CollectAnalytics;
+<span class="kw">use </span>mirrord_config_derive::MirrordConfig;
 <span class="kw">use </span>schemars::JsonSchema;
 
-<span class="kw">use crate</span>::{
-    config::source::MirrordConfigSource, env::EnvConfig, fs::FsConfig, network::NetworkConfig,
-};
+<span class="kw">use </span><span class="self">self</span>::{env::EnvConfig, fs::FsConfig, network::NetworkConfig};
 
-<span class="doccomment">/// Configuration for mirrord features.
+<span class="kw">pub mod </span>env;
+<span class="kw">pub mod </span>fs;
+<span class="kw">pub mod </span>network;
+
+<span class="doccomment">/// Controls mirrord features.
 ///
-/// For more information, check the [technical reference](https://mirrord.dev/docs/reference/)
-/// of the feature.
+/// See the
+/// [technical reference, Technical Reference](https://mirrord.dev/docs/reference/)
+/// to learn more about what each feature does.
 ///
-/// ## Examples
+/// The [`env`](#feature-env), [`fs`](#feature-fs) and [`network`](#feature-network) options
+/// have support for a shortened version, that you can see [here](#root-shortened).
 ///
-/// - Exclude &quot;SECRET&quot; environment variable, enable read-write file operations, mirror network
-///   traffic (default option), and generate a crash report (if there is any crash):
-///
-/// ```toml
-/// # mirrord-config.toml
-///
-/// [feature]
-/// fs = &quot;write&quot;
-/// capture_error_trace = true
-///
-/// [feature.env]
-/// exclude = &quot;SECRET&quot;
-/// ```
-///
-/// - Include only &quot;DATABASE_URL&quot;, and &quot;PORT&quot; environment variables, enable read-write file
-///   operations (only for `.txt` files), and enable both incoming and outgoing network traffic
-///   (mirror):
-///
-/// ```toml
-/// # mirrord-config.toml
-///
-/// [feature.env]
-/// include = &quot;DATABASE_URL;PORT&quot;
-///
-/// [feature.fs]
-/// mode = &quot;write&quot;
-/// include = &quot;^.*\.txt$&quot;
-///
-/// [feature.network]
-/// incoming = &quot;mirror&quot; # default, included here for effect
-///
-/// [feature.network.outgoing]
-/// tcp = true
-/// udp = true
+/// ```json
+/// {
+///   &quot;feature&quot;: {
+///     &quot;env&quot;: {
+///       &quot;include&quot;: &quot;DATABASE_USER;PUBLIC_ENV&quot;,
+///       &quot;exclude&quot;: &quot;DATABASE_PASSWORD;SECRET_ENV&quot;,
+///       &quot;overrides&quot;: {
+///         &quot;DATABASE_CONNECTION&quot;: &quot;db://localhost:7777/my-db&quot;,
+///         &quot;LOCAL_BEAR&quot;: &quot;panda&quot;
+///       }
+///     },
+///     &quot;fs&quot;: {
+///       &quot;mode&quot;: &quot;write&quot;,
+///       &quot;read_write&quot;: &quot;.+\.json&quot; ,
+///       &quot;read_only&quot;: [ &quot;.+\.yaml&quot;, &quot;.+important-file\.txt&quot; ],
+///       &quot;local&quot;: [ &quot;.+\.js&quot;, &quot;.+\.mjs&quot; ]
+///     },
+///     &quot;network&quot;: {
+///       &quot;incoming&quot;: {
+///         &quot;mode&quot;: &quot;steal&quot;,
+///         &quot;http_header_filter&quot;: {
+///           &quot;filter&quot;: &quot;host: api\..+&quot;,
+///           &quot;ports&quot;: [80, 8080]
+///         },
+///         &quot;port_mapping&quot;: [[ 7777, 8888 ]],
+///         &quot;ignore_localhost&quot;: false,
+///         &quot;ignore_ports&quot;: [9999, 10000]
+///       },
+///       &quot;outgoing&quot;: {
+///         &quot;tcp&quot;: true,
+///         &quot;udp&quot;: true,
+///         &quot;ignore_localhost&quot;: false,
+///         &quot;unix_streams&quot;: &quot;bear.+&quot;
+///       },
+///       &quot;dns&quot;: false
+///     },
+///   }
+/// }
 /// ```
 </span><span class="attr">#[derive(MirrordConfig, Clone, Debug)]
 #[config(map_to = <span class="string">&quot;FeatureFileConfig&quot;</span>, derive = <span class="string">&quot;JsonSchema&quot;</span>)]
 #[cfg_attr(test, config(derive = <span class="string">&quot;PartialEq, Eq&quot;</span>))]
 </span><span class="kw">pub struct </span>FeatureConfig {
-    <span class="doccomment">/// Controls the environment variables feature, see [`EnvConfig`].
-    ///
-    /// For more information, check the environment variables
-    /// [technical reference](https://mirrord.dev/docs/reference/env/).
+    <span class="doccomment">/// ## feature.env {#feature-env}
     </span><span class="attr">#[config(nested, toggleable)]
     </span><span class="kw">pub </span>env: EnvConfig,
 
-    <span class="doccomment">/// Controls the file operations feature, see [`FsConfig`].
-    ///
-    /// For more information, check the file operations
-    /// [technical reference](https://mirrord.dev/docs/reference/fileops/).
+    <span class="comment">// TODO(alex) [high] 2023-05-18: This links to `FsConfig`, not `FsUserConfig` as I thought
+    // before.
+    </span><span class="doccomment">/// ## feature.fs {#feature-fs}
     </span><span class="attr">#[config(nested, toggleable)]
     </span><span class="kw">pub </span>fs: FsConfig,
 
-    <span class="doccomment">/// Controls the network feature, see [`NetworkConfig`].
-    ///
-    /// For more information, check the network traffic
-    /// [technical reference](https://mirrord.dev/docs/reference/traffic/).
+    <span class="doccomment">/// ## feature.network {#feature-network}
     </span><span class="attr">#[config(nested, toggleable)]
     </span><span class="kw">pub </span>network: NetworkConfig,
+}
 
-    <span class="doccomment">/// Controls the crash reporting feature.
-    ///
-    /// With this feature enabled, mirrord generates a nice crash report log.
-    </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_CAPTURE_ERROR_TRACE&quot;</span>, default = <span class="bool-val">false</span>)]
-    </span><span class="kw">pub </span>capture_error_trace: bool,
+<span class="kw">impl </span>CollectAnalytics <span class="kw">for </span><span class="kw-2">&amp;</span>FeatureConfig {
+    <span class="kw">fn </span>collect_analytics(<span class="kw-2">&amp;</span><span class="self">self</span>, analytics: <span class="kw-2">&amp;mut </span>mirrord_analytics::Analytics) {
+        analytics.add(<span class="string">&quot;env&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.env);
+        analytics.add(<span class="string">&quot;fs&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.fs);
+        analytics.add(<span class="string">&quot;network&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.network);
+    }
 }
 </code></pre></div></section></main></body></html>

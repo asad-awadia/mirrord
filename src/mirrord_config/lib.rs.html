@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/config/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-fbd14db5c88ed452.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord_config" data-themes="" data-resource-suffix="" data-rustdoc-version="1.70.0-nightly (478cbb42b 2023-03-28)" data-search-js="search-bc5a112813b5d712.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" data-theme-light-css="light-db279b6232be9c13.css" data-theme-dark-css="dark-cf923f49f397b216.css" data-theme-ayu-css="ayu-be46fdc453a55015.css" ></div><script src="../../static.files/storage-d4a1a279bad1a0c0.js"></script><script defer src="../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-9ade54abd4bd73c8.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord_config/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/config/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord_config" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c609da59d 2023-04-18)" data-search-js="search-e077946657036a58.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-7bfb4c59cc6bc502.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-905937fbbdc8e9ea.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-1a524efa7bd4ab32.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord_config/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -486,141 +486,517 @@
 <a href="#486" id="486">486</a>
 <a href="#487" id="487">487</a>
 <a href="#488" id="488">488</a>
-</pre><pre class="rust"><code><span class="attr">#![feature(slice_concat_trait)]
-#![feature(once_cell)]
+<a href="#489" id="489">489</a>
+<a href="#490" id="490">490</a>
+<a href="#491" id="491">491</a>
+<a href="#492" id="492">492</a>
+<a href="#493" id="493">493</a>
+<a href="#494" id="494">494</a>
+<a href="#495" id="495">495</a>
+<a href="#496" id="496">496</a>
+<a href="#497" id="497">497</a>
+<a href="#498" id="498">498</a>
+<a href="#499" id="499">499</a>
+<a href="#500" id="500">500</a>
+<a href="#501" id="501">501</a>
+<a href="#502" id="502">502</a>
+<a href="#503" id="503">503</a>
+<a href="#504" id="504">504</a>
+<a href="#505" id="505">505</a>
+<a href="#506" id="506">506</a>
+<a href="#507" id="507">507</a>
+<a href="#508" id="508">508</a>
+<a href="#509" id="509">509</a>
+<a href="#510" id="510">510</a>
+<a href="#511" id="511">511</a>
+<a href="#512" id="512">512</a>
+<a href="#513" id="513">513</a>
+<a href="#514" id="514">514</a>
+<a href="#515" id="515">515</a>
+<a href="#516" id="516">516</a>
+<a href="#517" id="517">517</a>
+<a href="#518" id="518">518</a>
+<a href="#519" id="519">519</a>
+<a href="#520" id="520">520</a>
+<a href="#521" id="521">521</a>
+<a href="#522" id="522">522</a>
+<a href="#523" id="523">523</a>
+<a href="#524" id="524">524</a>
+<a href="#525" id="525">525</a>
+<a href="#526" id="526">526</a>
+<a href="#527" id="527">527</a>
+<a href="#528" id="528">528</a>
+<a href="#529" id="529">529</a>
+<a href="#530" id="530">530</a>
+<a href="#531" id="531">531</a>
+<a href="#532" id="532">532</a>
+<a href="#533" id="533">533</a>
+<a href="#534" id="534">534</a>
+<a href="#535" id="535">535</a>
+<a href="#536" id="536">536</a>
+<a href="#537" id="537">537</a>
+<a href="#538" id="538">538</a>
+<a href="#539" id="539">539</a>
+<a href="#540" id="540">540</a>
+<a href="#541" id="541">541</a>
+<a href="#542" id="542">542</a>
+<a href="#543" id="543">543</a>
+<a href="#544" id="544">544</a>
+<a href="#545" id="545">545</a>
+<a href="#546" id="546">546</a>
+<a href="#547" id="547">547</a>
+<a href="#548" id="548">548</a>
+<a href="#549" id="549">549</a>
+<a href="#550" id="550">550</a>
+<a href="#551" id="551">551</a>
+<a href="#552" id="552">552</a>
+<a href="#553" id="553">553</a>
+<a href="#554" id="554">554</a>
+<a href="#555" id="555">555</a>
+<a href="#556" id="556">556</a>
+<a href="#557" id="557">557</a>
+<a href="#558" id="558">558</a>
+<a href="#559" id="559">559</a>
+<a href="#560" id="560">560</a>
+<a href="#561" id="561">561</a>
+<a href="#562" id="562">562</a>
+<a href="#563" id="563">563</a>
+<a href="#564" id="564">564</a>
+<a href="#565" id="565">565</a>
+<a href="#566" id="566">566</a>
+<a href="#567" id="567">567</a>
+<a href="#568" id="568">568</a>
+<a href="#569" id="569">569</a>
+<a href="#570" id="570">570</a>
+<a href="#571" id="571">571</a>
+<a href="#572" id="572">572</a>
+<a href="#573" id="573">573</a>
+<a href="#574" id="574">574</a>
+<a href="#575" id="575">575</a>
+<a href="#576" id="576">576</a>
+<a href="#577" id="577">577</a>
+<a href="#578" id="578">578</a>
+<a href="#579" id="579">579</a>
+<a href="#580" id="580">580</a>
+<a href="#581" id="581">581</a>
+<a href="#582" id="582">582</a>
+<a href="#583" id="583">583</a>
+<a href="#584" id="584">584</a>
+<a href="#585" id="585">585</a>
+<a href="#586" id="586">586</a>
+<a href="#587" id="587">587</a>
+<a href="#588" id="588">588</a>
+<a href="#589" id="589">589</a>
+<a href="#590" id="590">590</a>
+<a href="#591" id="591">591</a>
+<a href="#592" id="592">592</a>
+<a href="#593" id="593">593</a>
+<a href="#594" id="594">594</a>
+<a href="#595" id="595">595</a>
+<a href="#596" id="596">596</a>
+<a href="#597" id="597">597</a>
+<a href="#598" id="598">598</a>
+<a href="#599" id="599">599</a>
+<a href="#600" id="600">600</a>
+<a href="#601" id="601">601</a>
+<a href="#602" id="602">602</a>
+<a href="#603" id="603">603</a>
+<a href="#604" id="604">604</a>
+<a href="#605" id="605">605</a>
+<a href="#606" id="606">606</a>
+<a href="#607" id="607">607</a>
+<a href="#608" id="608">608</a>
+<a href="#609" id="609">609</a>
+<a href="#610" id="610">610</a>
+<a href="#611" id="611">611</a>
+<a href="#612" id="612">612</a>
+<a href="#613" id="613">613</a>
+<a href="#614" id="614">614</a>
+<a href="#615" id="615">615</a>
+<a href="#616" id="616">616</a>
+<a href="#617" id="617">617</a>
+<a href="#618" id="618">618</a>
+<a href="#619" id="619">619</a>
+<a href="#620" id="620">620</a>
+<a href="#621" id="621">621</a>
+<a href="#622" id="622">622</a>
+<a href="#623" id="623">623</a>
+<a href="#624" id="624">624</a>
+<a href="#625" id="625">625</a>
+<a href="#626" id="626">626</a>
+<a href="#627" id="627">627</a>
+<a href="#628" id="628">628</a>
+<a href="#629" id="629">629</a>
+<a href="#630" id="630">630</a>
+<a href="#631" id="631">631</a>
+<a href="#632" id="632">632</a>
+<a href="#633" id="633">633</a>
+<a href="#634" id="634">634</a>
+<a href="#635" id="635">635</a>
+<a href="#636" id="636">636</a>
+<a href="#637" id="637">637</a>
+<a href="#638" id="638">638</a>
+<a href="#639" id="639">639</a>
+<a href="#640" id="640">640</a>
+<a href="#641" id="641">641</a>
+<a href="#642" id="642">642</a>
+<a href="#643" id="643">643</a>
+<a href="#644" id="644">644</a>
+<a href="#645" id="645">645</a>
+<a href="#646" id="646">646</a>
+<a href="#647" id="647">647</a>
+<a href="#648" id="648">648</a>
+<a href="#649" id="649">649</a>
+<a href="#650" id="650">650</a>
+<a href="#651" id="651">651</a>
+<a href="#652" id="652">652</a>
+<a href="#653" id="653">653</a>
+<a href="#654" id="654">654</a>
+<a href="#655" id="655">655</a>
+<a href="#656" id="656">656</a>
+<a href="#657" id="657">657</a>
+<a href="#658" id="658">658</a>
+<a href="#659" id="659">659</a>
+<a href="#660" id="660">660</a>
+<a href="#661" id="661">661</a>
+<a href="#662" id="662">662</a>
+<a href="#663" id="663">663</a>
+<a href="#664" id="664">664</a>
+<a href="#665" id="665">665</a>
+<a href="#666" id="666">666</a>
+<a href="#667" id="667">667</a>
+<a href="#668" id="668">668</a>
+<a href="#669" id="669">669</a>
+<a href="#670" id="670">670</a>
+<a href="#671" id="671">671</a>
+<a href="#672" id="672">672</a>
+<a href="#673" id="673">673</a>
+<a href="#674" id="674">674</a>
+<a href="#675" id="675">675</a>
+<a href="#676" id="676">676</a>
+<a href="#677" id="677">677</a>
+<a href="#678" id="678">678</a>
+<a href="#679" id="679">679</a>
+<a href="#680" id="680">680</a>
+<a href="#681" id="681">681</a>
+<a href="#682" id="682">682</a>
+<a href="#683" id="683">683</a>
+<a href="#684" id="684">684</a>
+<a href="#685" id="685">685</a>
+<a href="#686" id="686">686</a>
+<a href="#687" id="687">687</a>
+<a href="#688" id="688">688</a>
+<a href="#689" id="689">689</a>
+<a href="#690" id="690">690</a>
+<a href="#691" id="691">691</a>
+<a href="#692" id="692">692</a>
+<a href="#693" id="693">693</a>
+<a href="#694" id="694">694</a>
+<a href="#695" id="695">695</a>
+<a href="#696" id="696">696</a>
+<a href="#697" id="697">697</a>
+<a href="#698" id="698">698</a>
+<a href="#699" id="699">699</a>
+<a href="#700" id="700">700</a>
+<a href="#701" id="701">701</a>
+<a href="#702" id="702">702</a>
+<a href="#703" id="703">703</a>
+<a href="#704" id="704">704</a>
+<a href="#705" id="705">705</a>
+<a href="#706" id="706">706</a>
+<a href="#707" id="707">707</a>
+<a href="#708" id="708">708</a>
+<a href="#709" id="709">709</a>
+<a href="#710" id="710">710</a>
+<a href="#711" id="711">711</a>
+<a href="#712" id="712">712</a>
+<a href="#713" id="713">713</a>
+<a href="#714" id="714">714</a>
+<a href="#715" id="715">715</a>
+<a href="#716" id="716">716</a>
+<a href="#717" id="717">717</a>
+<a href="#718" id="718">718</a>
+<a href="#719" id="719">719</a>
+<a href="#720" id="720">720</a>
+<a href="#721" id="721">721</a>
+<a href="#722" id="722">722</a>
+<a href="#723" id="723">723</a>
+<a href="#724" id="724">724</a>
+<a href="#725" id="725">725</a>
+<a href="#726" id="726">726</a>
+</pre></div><pre class="rust"><code><span class="attr">#![feature(slice_concat_trait)]
+#![feature(lazy_cell)]
 #![feature(result_option_inspect)]
-
+#![warn(clippy::indexing_slicing)]
+</span><span class="doccomment">//! &lt;!--${internal}--&gt;
+//! To generate the `mirrord-schema.json` file see
+//! [`tests::check_schema_file_exists_and_is_valid_or_create_it`].
+//!
+//! Remember to re-generate the `mirrord-schema.json` if you make **ANY** changes to this lib,
+//! including if you only made documentation changes.
 </span><span class="kw">pub mod </span>agent;
 <span class="kw">pub mod </span>config;
-<span class="kw">pub mod </span>env;
 <span class="kw">pub mod </span>feature;
-<span class="kw">pub mod </span>fs;
-<span class="kw">pub mod </span>incoming;
-<span class="kw">pub mod </span>network;
-<span class="kw">pub mod </span>outgoing;
 <span class="kw">pub mod </span>target;
 <span class="kw">pub mod </span>util;
 
-<span class="doccomment">/// To generate the `mirrord-schema.json` file see
-/// [`tests::check_schema_file_exists_and_is_valid_or_create_it`].
-///
-/// Remember to re-generate the `mirrord-schema.json` if you make **ANY** changes to this lib,
-/// including if you only made documentation changes.
-</span><span class="kw">use </span>std::path::Path;
+<span class="kw">use </span>std::path::Path;
 
 <span class="kw">use </span>config::{ConfigError, MirrordConfig};
+<span class="kw">use </span>mirrord_analytics::CollectAnalytics;
 <span class="kw">use </span>mirrord_config_derive::MirrordConfig;
 <span class="kw">use </span>schemars::JsonSchema;
+<span class="kw">use </span>tracing::warn;
 
 <span class="kw">use crate</span>::{
     agent::AgentConfig, config::source::MirrordConfigSource, feature::FeatureConfig,
     target::TargetConfig, util::VecOrSingle,
 };
 
-<span class="doccomment">/// Main struct for mirrord-layer&#39;s configuration
+<span class="kw">const </span>PAUSE_WITHOUT_STEAL_WARNING: <span class="kw-2">&amp;</span>str =
+    <span class="string">&quot;--pause specified without --steal: Incoming requests to the application will
+    not be handled. The target container running the deployed application is paused,
+    and responses from the local application are dropped.
+
+    Attention: if network based liveness/readiness probes are defined for the
+    target, they will fail under this configuration.
+
+    To have the local application handle incoming requests you can run again with
+    `--steal`. To have the deployed application handle requests, run again without
+    specifying `--pause`.
+    &quot;</span>;
+
+<span class="doccomment">/// mirrord allows for a high degree of customization when it comes to which features you want to
+/// enable, and how they should function.
 ///
-/// ## Examples
+/// All of the configuration fields have a default value, so a minimal configuration would be no
+/// configuration at all.
 ///
-/// - Run mirrord with read-only file operations, mirroring traffic, skipping unwanted processes:
+/// To help you get started, here are examples of a basic configuration file, and a complete
+/// configuration file containing all fields.
 ///
-/// ```toml
-/// # mirrord-config.toml
+/// ### Basic `config.json` {#root-basic}
 ///
-/// target = &quot;pod/sample-pod-1234&quot;
-/// skip_processes = [&quot;ide-debugger&quot;, &quot;ide-service&quot;] # we don&#39;t want mirrord to hook into these
-///
-/// [agent]
-/// log_level = &quot;debug&quot;
-/// ttl = 1024 # seconds
-///
-/// [feature]
-/// fs = &quot;read&quot; # default
-///
-/// [feature.network]
-/// incoming = &quot;mirror&quot; # default
+/// ```json
+/// {
+///   &quot;target&quot;: &quot;pod/bear-pod&quot;,
+///   &quot;feature&quot;: {
+///     &quot;env&quot;: true,
+///     &quot;fs&quot;: &quot;read&quot;,
+///     &quot;network&quot;: true
+///   }
+/// }
 /// ```
 ///
-/// - Run mirrord with read-write file operations, stealing traffic, accept local TLS certificates,
-///   use a custom mirrord-agent image:
+/// ### Complete `config.json` {#root-complete}
 ///
-/// ```toml
-/// # mirrord-config.toml
-///
-/// target = &quot;pod/sample-pod-1234&quot;
-/// accept_invalid_certificates = true
-///
-/// [agent]
-/// log_level = &quot;trace&quot;
-/// ttl = 1024 # seconds
-/// image = &quot;registry/mirrord-agent-custom:latest&quot;
-/// image_pull_policy = &quot;Always&quot;
-///
-/// [feature]
-/// fs = &quot;write&quot;
-///
-/// [feature.network]
-/// incoming = &quot;steal&quot;
+/// ```json
+/// {
+///   &quot;accept_invalid_certificates&quot;: false,
+///   &quot;skip_processes&quot;: &quot;ide-debugger&quot;,
+///   &quot;pause&quot;: false,
+///   &quot;target&quot;: {
+///     &quot;path&quot;: &quot;pod/bear-pod&quot;,
+///     &quot;namespace&quot;: &quot;default&quot;
+///   },
+///   &quot;connect_tcp&quot;: null,
+///   &quot;agent&quot;: {
+///     &quot;log_level&quot;: &quot;info&quot;,
+///     &quot;namespace&quot;: &quot;default&quot;,
+///     &quot;image&quot;: &quot;ghcr.io/metalbear-co/mirrord:latest&quot;,
+///     &quot;image_pull_policy&quot;: &quot;IfNotPresent&quot;,
+///     &quot;image_pull_secrets&quot;: [ { &quot;secret-key&quot;: &quot;secret&quot; } ],
+///     &quot;ttl&quot;: 30,
+///     &quot;ephemeral&quot;: false,
+///     &quot;communication_timeout&quot;: 30,
+///     &quot;startup_timeout&quot;: 360,
+///     &quot;network_interface&quot;: &quot;eth0&quot;,
+///     &quot;flush_connections&quot;: true
+///   },
+///   &quot;feature&quot;: {
+///     &quot;env&quot;: {
+///       &quot;include&quot;: &quot;DATABASE_USER;PUBLIC_ENV&quot;,
+///       &quot;exclude&quot;: &quot;DATABASE_PASSWORD;SECRET_ENV&quot;,
+///       &quot;overrides&quot;: {
+///         &quot;DATABASE_CONNECTION&quot;: &quot;db://localhost:7777/my-db&quot;,
+///         &quot;LOCAL_BEAR&quot;: &quot;panda&quot;
+///       }
+///     },
+///     &quot;fs&quot;: {
+///       &quot;mode&quot;: &quot;write&quot;,
+///       &quot;read_write&quot;: &quot;.+\.json&quot; ,
+///       &quot;read_only&quot;: [ &quot;.+\.yaml&quot;, &quot;.+important-file\.txt&quot; ],
+///       &quot;local&quot;: [ &quot;.+\.js&quot;, &quot;.+\.mjs&quot; ]
+///     },
+///     &quot;network&quot;: {
+///       &quot;incoming&quot;: {
+///         &quot;mode&quot;: &quot;steal&quot;,
+///         &quot;http_header_filter&quot;: {
+///           &quot;filter&quot;: &quot;host: api\..+&quot;,
+///           &quot;ports&quot;: [80, 8080]
+///         },
+///         &quot;port_mapping&quot;: [[ 7777, 8888 ]],
+///         &quot;ignore_localhost&quot;: false,
+///         &quot;ignore_ports&quot;: [9999, 10000]
+///       },
+///       &quot;outgoing&quot;: {
+///         &quot;tcp&quot;: true,
+///         &quot;udp&quot;: true,
+///         &quot;ignore_localhost&quot;: false,
+///         &quot;unix_streams&quot;: &quot;bear.+&quot;
+///       },
+///       &quot;dns&quot;: false
+///     },
+///   },
+///   &quot;operator&quot;: true,
+///   &quot;kubeconfig&quot;: &quot;~/.kube/config&quot;,
+///   &quot;sip_binaries&quot;: &quot;bash&quot;
+///   &quot;telemetry&quot;: true,
+/// }
 /// ```
+///
+/// # Options {#root-options}
 </span><span class="attr">#[derive(MirrordConfig, Clone, Debug)]
 #[config(map_to = <span class="string">&quot;LayerFileConfig&quot;</span>, derive = <span class="string">&quot;JsonSchema&quot;</span>)]
 #[cfg_attr(test, config(derive = <span class="string">&quot;PartialEq, Eq&quot;</span>))]
 </span><span class="kw">pub struct </span>LayerConfig {
-    <span class="doccomment">/// Controls whether or not mirrord accepts invalid TLS certificates (e.g. self-signed
+    <span class="doccomment">/// ## accept_invalid_certificates {#root-accept_invalid_certificates}
+    ///
+    /// Controls whether or not mirrord accepts invalid TLS certificates (e.g. self-signed
     /// certificates).
+    ///
+    /// Defaults to `false`.
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_ACCEPT_INVALID_CERTIFICATES&quot;</span>, default = <span class="bool-val">false</span>)]
     </span><span class="kw">pub </span>accept_invalid_certificates: bool,
 
-    <span class="doccomment">/// Allows mirrord to skip unwanted processes.
+    <span class="doccomment">/// ## skip_processes {#root-skip_processes}
+    ///
+    /// Allows mirrord to skip unwanted processes.
     ///
     /// Useful when process A spawns process B, and the user wants mirrord to operate only on
     /// process B.
+    /// Accepts a single value, or multiple values separated by `;`.
+    ///
+    ///```json
+    /// {
+    ///  &quot;skip_processes&quot;: &quot;bash;node&quot;
+    /// }
+    /// ```
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_SKIP_PROCESSES&quot;</span>)]
     </span><span class="kw">pub </span>skip_processes: <span class="prelude-ty">Option</span>&lt;VecOrSingle&lt;String&gt;&gt;,
 
-    <span class="doccomment">/// Specifies the running pod to mirror.
+    <span class="doccomment">/// ## pause {#root-pause}
+    /// Controls target pause feature. Unstable.
     ///
-    /// Supports:
-    /// - `pod/{sample-pod}/[container]/{sample-container}`;
-    /// - `podname/{sample-pod}/[container]/{sample-container}`;
-    /// - `deployment/{sample-deployment}/[container]/{sample-container}`;
-    </span><span class="attr">#[config(nested)]
-    </span><span class="kw">pub </span>target: TargetConfig,
+    /// With this feature enabled, the remote container is paused while this layer is connected to
+    /// the agent.
+    ///
+    /// Defaults to `false`.
+    </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_PAUSE&quot;</span>, default = <span class="bool-val">false</span>, unstable)]
+    </span><span class="kw">pub </span>pause: bool,
 
-    <span class="doccomment">/// IP:PORT to connect to instead of using k8s api, for testing purposes.
+    <span class="doccomment">/// ## connect_tcp {#root-connect_tpc}
+    ///
+    /// IP:PORT to connect to instead of using k8s api, for testing purposes.
+    ///
+    /// ```json
+    /// {
+    ///   &quot;connect_tcp&quot;: &quot;10.10.0.100:7777&quot;
+    /// }
+    /// ```
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_CONNECT_TCP&quot;</span>)]
     </span><span class="kw">pub </span>connect_tcp: <span class="prelude-ty">Option</span>&lt;String&gt;,
 
-    <span class="doccomment">/// Agent name that already exists that we can connect to.
+    <span class="doccomment">/// &lt;!--${internal}--&gt;
+    ///
+    /// ## connect_agent_name {#root-connect_agent_name}
+    ///
+    /// Agent name that already exists that we can connect to.
+    ///
+    /// Keep in mind that the intention here is to allow reusing a long living mirrord-agent pod,
+    /// and **not** to connect multiple (simultaneos) mirrord instances to a single
+    /// mirrord-agent, as the later is not properly supported without the use of
+    /// [mirrord-operator](https://metalbear.co/#waitlist-form).
+    ///
+    /// ```json
+    /// {
+    ///   &quot;connect_agent_name&quot;: &quot;mirrord-agent-still-alive&quot;
+    /// }
+    /// ```
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_CONNECT_AGENT&quot;</span>)]
     </span><span class="kw">pub </span>connect_agent_name: <span class="prelude-ty">Option</span>&lt;String&gt;,
 
-    <span class="doccomment">/// Agent listen port that already exists that we can connect to.
+    <span class="doccomment">/// &lt;!--${internal}--&gt;
+    ///
+    /// ## connect_agent_port {#root-connect_agent_port}
+    ///
+    /// Agent listen port that already exists that we can connect to.
+    ///
+    /// ```json
+    /// {
+    ///   &quot;connect_agent_port&quot;: &quot;8888&quot;
+    /// }
+    /// ```
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_CONNECT_PORT&quot;</span>)]
     </span><span class="kw">pub </span>connect_agent_port: <span class="prelude-ty">Option</span>&lt;u16&gt;,
 
-    <span class="doccomment">/// Agent configuration, see [`agent::AgentFileConfig`].
-    </span><span class="attr">#[config(nested)]
-    </span><span class="kw">pub </span>agent: AgentConfig,
-
-    <span class="doccomment">/// Controls mirrord features, see [`feature::FeatureFileConfig`].
-    </span><span class="attr">#[config(nested)]
-    </span><span class="kw">pub </span>feature: FeatureConfig,
-
-    <span class="doccomment">/// Allow to lookup if operator is installed on cluster and use it
+    <span class="doccomment">/// ## operator {#root-operator}
+    ///
+    /// Allow to lookup if operator is installed on cluster and use it.
+    ///
+    /// Defaults to `true`.
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_OPERATOR_ENABLE&quot;</span>, default = <span class="bool-val">true</span>)]
     </span><span class="kw">pub </span>operator: bool,
 
-    <span class="doccomment">/// Path to a kubeconfig file, if not specified, will use KUBECONFIG or ~/.kube/config or the
-    /// in-cluster config.
+    <span class="doccomment">/// ## kubeconfig {#root-kubeconfig}
+    ///
+    /// Path to a kubeconfig file, if not specified, will use `KUBECONFIG`, or `~/.kube/config`, or
+    /// the in-cluster config.
+    ///
+    /// ```json
+    /// {
+    ///  &quot;kubeconfig&quot;: &quot;~/bear/kube-config&quot;
+    /// }
+    /// ```
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_KUBECONFIG&quot;</span>)]
     </span><span class="kw">pub </span>kubeconfig: <span class="prelude-ty">Option</span>&lt;String&gt;,
 
-    <span class="doccomment">/// Binaries to patch (macOS SIP).
-    /// Use this when mirrord isn&#39;t loaded to protected binaries
-    /// that weren&#39;t automatically patched.
-    /// Runs `endswith` on the binary path (so `bash` would apply to any binary
-    /// ending with `bash` while `/usr/bin/bash` would apply only for that binary).
+    <span class="doccomment">/// ## sip_binaries {#root-sip_binaries}
+    ///
+    /// Binaries to patch (macOS SIP).
+    ///
+    /// Use this when mirrord isn&#39;t loaded to protected binaries that weren&#39;t automatically
+    /// patched.
+    ///
+    /// Runs `endswith` on the binary path (so `bash` would apply to any binary ending with `bash`
+    /// while `/usr/bin/bash` would apply only for that binary).
+    ///
+    /// ```json
+    /// {
+    ///  &quot;sip_binaries&quot;: &quot;bash;python&quot;
+    /// }
+    /// ```
     </span><span class="kw">pub </span>sip_binaries: <span class="prelude-ty">Option</span>&lt;VecOrSingle&lt;String&gt;&gt;,
+
+    <span class="doccomment">/// ## target {#root-target}
+    </span><span class="attr">#[config(nested)]
+    </span><span class="kw">pub </span>target: TargetConfig,
+
+    <span class="doccomment">/// ## agent {#root-agent}
+    </span><span class="attr">#[config(nested)]
+    </span><span class="kw">pub </span>agent: AgentConfig,
+
+    <span class="doccomment">/// # feature {#root-feature}
+    </span><span class="attr">#[config(nested)]
+    </span><span class="kw">pub </span>feature: FeatureConfig,
+
+    <span class="doccomment">/// ## telemetry {#root-telemetry}
+    /// Controls whether or not mirrord sends telemetry data to MetalBear cloud.
+    /// Telemetry sent doesn&#39;t contain personal identifiers or any data that
+    /// should be considered sensitive. It is used to improve the product.
+    /// [For more information](https://github.com/metalbear-co/mirrord/blob/main/TELEMETRY.md)
+    </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_TELEMETRY&quot;</span>, default = <span class="bool-val">true</span>)]
+    </span><span class="kw">pub </span>telemetry: bool,
 }
 
 <span class="kw">impl </span>LayerConfig {
@@ -630,6 +1006,96 @@
         } <span class="kw">else </span>{
             LayerFileConfig::default().generate_config()
         }
+    }
+
+    <span class="doccomment">/// Verify that there are no conflicting settings.
+    /// We don&#39;t call it from `from_env` since we want to verify it only once (from cli)
+    </span><span class="kw">pub fn </span>verify(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), ConfigError&gt; {
+        <span class="kw">if </span><span class="self">self</span>.pause {
+            <span class="kw">if </span><span class="self">self</span>.agent.ephemeral {
+                <span class="prelude-val">Err</span>(ConfigError::Conflict(<span class="string">&quot;Pausing is not yet supported together with an ephemeral agent container.
+                Mutually exclusive arguments `--pause` and `--ephemeral-container` passed together.&quot;</span>.to_string()))<span class="question-mark">?</span>;
+            }
+            <span class="kw">if </span>!<span class="self">self</span>.feature.network.incoming.is_steal() {
+                <span class="macro">warn!</span>(<span class="string">&quot;{PAUSE_WITHOUT_STEAL_WARNING}&quot;</span>);
+            }
+        }
+        <span class="kw">if </span><span class="self">self
+            </span>.feature
+            .network
+            .incoming
+            .http_filter
+            .path_filter
+            .is_some()
+            &amp;&amp; <span class="self">self
+                </span>.feature
+                .network
+                .incoming
+                .http_filter
+                .header_filter
+                .is_some()
+        {
+            <span class="prelude-val">Err</span>(ConfigError::Conflict(
+                <span class="string">&quot;Cannot use both HTTP header filter and path filter at the same time&quot;</span>.to_string(),
+            ))<span class="question-mark">?</span>;
+        }
+        <span class="kw">if </span><span class="self">self
+            </span>.feature
+            .network
+            .incoming
+            .http_header_filter
+            .filter
+            .is_some()
+            &amp;&amp; (<span class="self">self
+                </span>.feature
+                .network
+                .incoming
+                .http_filter
+                .path_filter
+                .is_some()
+                || <span class="self">self
+                    </span>.feature
+                    .network
+                    .incoming
+                    .http_filter
+                    .header_filter
+                    .is_some())
+        {
+            <span class="prelude-val">Err</span>(ConfigError::Conflict(<span class="string">&quot;Cannot use old http filter and new http filter at the same time. Use only `http_filter` instead of `http_header_filter`&quot;</span>.to_string()))<span class="question-mark">?</span>;
+        }
+        <span class="kw">if </span><span class="self">self</span>.target.path.is_none() {
+            <span class="kw">if </span><span class="self">self</span>.target.namespace.is_some() {
+                <span class="prelude-val">Err</span>(ConfigError::TargetNamespaceWithoutTarget)<span class="question-mark">?</span>;
+            }
+            <span class="kw">if </span><span class="self">self</span>.feature.network.incoming.is_steal() {
+                <span class="prelude-val">Err</span>(ConfigError::Conflict(<span class="string">&quot;Steal mode is not compatible with a targetless agent, please either disable this option or specify a target.&quot;</span>.into()))<span class="question-mark">?</span>;
+            }
+            <span class="kw">if </span><span class="self">self</span>.agent.ephemeral {
+                <span class="prelude-val">Err</span>(ConfigError::Conflict(
+                    <span class="string">&quot;Using an ephemeral container for the agent is not compatible with a targetless agent, please either disable this option or specify a target.&quot;</span>.into(),
+                ))<span class="question-mark">?</span>;
+            }
+            <span class="kw">if </span><span class="self">self</span>.pause {
+                <span class="prelude-val">Err</span>(ConfigError::Conflict(
+                    <span class="string">&quot;The target pause feature is not compatible with a targetless agent, please either disable this option or specify a target.&quot;</span>.into(),
+                ))<span class="question-mark">?</span>;
+            }
+        }
+        <span class="prelude-val">Ok</span>(())
+    }
+}
+
+<span class="kw">impl </span>CollectAnalytics <span class="kw">for </span><span class="kw-2">&amp;</span>LayerConfig {
+    <span class="kw">fn </span>collect_analytics(<span class="kw-2">&amp;</span><span class="self">self</span>, analytics: <span class="kw-2">&amp;mut </span>mirrord_analytics::Analytics) {
+        analytics.add(<span class="string">&quot;pause&quot;</span>, <span class="self">self</span>.pause);
+        analytics.add(
+            <span class="string">&quot;accept_invalid_certificates&quot;</span>,
+            <span class="self">self</span>.accept_invalid_certificates,
+        );
+        analytics.add(<span class="string">&quot;use_kubeconfig&quot;</span>, <span class="self">self</span>.kubeconfig.is_some());
+        (<span class="kw-2">&amp;</span><span class="self">self</span>.target).collect_analytics(analytics);
+        (<span class="kw-2">&amp;</span><span class="self">self</span>.agent).collect_analytics(analytics);
+        (<span class="kw-2">&amp;</span><span class="self">self</span>.feature).collect_analytics(analytics);
     }
 }
 
@@ -665,11 +1131,15 @@
     <span class="kw">use super</span>::<span class="kw-2">*</span>;
     <span class="kw">use crate</span>::{
         agent::AgentFileConfig,
-        feature::FeatureFileConfig,
-        fs::{FsModeConfig, FsUserConfig},
-        incoming::{IncomingAdvancedFileConfig, IncomingFileConfig, IncomingMode},
-        network::NetworkFileConfig,
-        outgoing::OutgoingFileConfig,
+        feature::{
+            fs::{FsModeConfig, FsUserConfig},
+            network::{
+                incoming::{IncomingAdvancedFileConfig, IncomingFileConfig, IncomingMode},
+                outgoing::OutgoingFileConfig,
+                NetworkFileConfig,
+            },
+            FeatureFileConfig,
+        },
         target::{PodTarget, Target, TargetFileConfig},
         util::ToggleableConfig,
     };
@@ -696,6 +1166,7 @@
                     <span class="string">r#&quot;
                     {
                         &quot;accept_invalid_certificates&quot;: false,
+                        &quot;pause&quot;: false,
                         &quot;target&quot;: {
                             &quot;path&quot;: &quot;pod/test-service-abcdefg-abcd&quot;,
                             &quot;namespace&quot;: &quot;default&quot;
@@ -708,7 +1179,6 @@
                             &quot;image_pull_secrets&quot;: [{&quot;name&quot;: &quot;testsecret&quot;}],
                             &quot;ttl&quot;: 60,
                             &quot;ephemeral&quot;: false,
-                            &quot;pause&quot;: false,
                             &quot;flush_connections&quot;: false
                         },
                         &quot;feature&quot;: {
@@ -731,6 +1201,7 @@
                 ConfigType::Toml =&gt; {
                     <span class="string">r#&quot;
                     accept_invalid_certificates = false
+                    pause = false
 
                     [target]
                     path = &quot;pod/test-service-abcdefg-abcd&quot;
@@ -744,7 +1215,6 @@
                     image_pull_secrets = [{name = &quot;testsecret&quot;}]
                     ttl = 60
                     ephemeral = false
-                    pause = false
                     flush_connections = false
 
                     [feature]
@@ -765,6 +1235,7 @@
                 ConfigType::Yaml =&gt; {
                     <span class="string">r#&quot;
                     accept_invalid_certificates: false
+                    pause: false
                     target:
                         path: &quot;pod/test-service-abcdefg-abcd&quot;
                         namespace: &quot;default&quot;
@@ -778,7 +1249,6 @@
                             - name: &quot;testsecret&quot;
                         ttl: 60
                         ephemeral: false
-                        pause: false
                         flush_connections: false
 
                     feature:
@@ -830,7 +1300,9 @@
 
         <span class="kw">let </span>expect = LayerFileConfig {
             accept_invalid_certificates: <span class="prelude-val">Some</span>(<span class="bool-val">false</span>),
+            pause: <span class="prelude-val">Some</span>(<span class="bool-val">false</span>),
             kubeconfig: <span class="prelude-val">None</span>,
+            telemetry: <span class="prelude-val">None</span>,
             connect_agent_name: <span class="prelude-val">None</span>,
             connect_agent_port: <span class="prelude-val">None</span>,
             target: <span class="prelude-val">Some</span>(TargetFileConfig::Advanced {
@@ -855,7 +1327,6 @@
                 communication_timeout: <span class="prelude-val">None</span>,
                 startup_timeout: <span class="prelude-val">None</span>,
                 network_interface: <span class="prelude-val">None</span>,
-                pause: <span class="prelude-val">Some</span>(<span class="bool-val">false</span>),
                 flush_connections: <span class="prelude-val">Some</span>(<span class="bool-val">false</span>),
             }),
             feature: <span class="prelude-val">Some</span>(FeatureFileConfig {
@@ -864,13 +1335,16 @@
                 network: <span class="prelude-val">Some</span>(ToggleableConfig::Config(NetworkFileConfig {
                     dns: <span class="prelude-val">Some</span>(<span class="bool-val">false</span>),
                     incoming: <span class="prelude-val">Some</span>(ToggleableConfig::Config(IncomingFileConfig::Advanced(
-                        IncomingAdvancedFileConfig {
+                        Box::new(IncomingAdvancedFileConfig {
                             mode: <span class="prelude-val">Some</span>(IncomingMode::Mirror),
                             http_header_filter: <span class="prelude-val">None</span>,
+                            http_filter: <span class="prelude-val">None</span>,
                             port_mapping: <span class="prelude-val">None</span>,
                             ignore_localhost: <span class="prelude-val">None</span>,
                             ignore_ports: <span class="prelude-val">None</span>,
-                        },
+                            listen_ports: <span class="prelude-val">None</span>,
+                            on_concurrent_steal: <span class="prelude-val">None</span>,
+                        }),
                     ))),
                     outgoing: <span class="prelude-val">Some</span>(ToggleableConfig::Config(OutgoingFileConfig {
                         tcp: <span class="prelude-val">Some</span>(<span class="bool-val">true</span>),
@@ -878,7 +1352,6 @@
                         ..Default::default()
                     })),
                 })),
-                capture_error_trace: <span class="prelude-val">None</span>,
             }),
             connect_tcp: <span class="prelude-val">None</span>,
             operator: <span class="prelude-val">None</span>,
@@ -888,7 +1361,8 @@
         <span class="macro">assert_eq!</span>(config, expect);
     }
 
-    <span class="doccomment">/// Helper for printing the config schema.
+    <span class="doccomment">/// &lt;!--${internal}--&gt;
+    /// Helper for printing the config schema.
     ///
     /// Run it with:
     ///
@@ -904,7 +1378,8 @@
 
     <span class="kw">const </span>SCHEMA_FILE_PATH: <span class="kw-2">&amp;</span>str = <span class="string">&quot;../../mirrord-schema.json&quot;</span>;
 
-    <span class="doccomment">/// Writes the config schema to a file (uploaded to the schema store).
+    <span class="doccomment">/// &lt;!--${internal}--&gt;
+    /// Writes the config schema to a file (uploaded to the schema store).
     </span><span class="kw">fn </span>write_schema_to_file(schema: <span class="kw-2">&amp;</span>RootSchema) -&gt; File {
         <span class="macro">println!</span>(<span class="string">&quot;Writing schema to file.&quot;</span>);
 
@@ -924,7 +1399,8 @@
         file
     }
 
-    <span class="doccomment">/// Checks if a schema file already exists, otherwise generates the schema and creates the file.
+    <span class="doccomment">/// &lt;!--${internal}--&gt;
+    /// Checks if a schema file already exists, otherwise generates the schema and creates the file.
     ///
     /// It also checks and updates when the schema file is outdated.
     ///

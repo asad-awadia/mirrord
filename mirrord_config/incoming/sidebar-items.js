@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["IncomingFileConfig","IncomingMode"],"mod":["http_filter"],"struct":["IncomingAdvancedFileConfig","IncomingConfig","IncomingConfigParseError"]};
