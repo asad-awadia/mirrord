@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/cli/src/internal_proxy.rs`."><title>internal_proxy.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c609da59d 2023-04-18)" data-search-js="search-e077946657036a58.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-7bfb4c59cc6bc502.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-905937fbbdc8e9ea.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-1a524efa7bd4ab32.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/cli/src/internal_proxy.rs`."><title>internal_proxy.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-47e7ab555ef2818a.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.0-nightly (e3abbd499 2023-09-06)" data-channel="nightly" data-search-js="search-5d3eaacf19ebf04f.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-f194925aa375ae96.css" data-theme-dark-css="dark-1dd4d1ce031e15de.css" data-theme-ayu-css="ayu-49e58d069f567085.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ef3a2de404864b0b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-f194925aa375ae96.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1dd4d1ce031e15de.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -312,18 +312,6 @@
 <a href="#312" id="312">312</a>
 <a href="#313" id="313">313</a>
 <a href="#314" id="314">314</a>
-<a href="#315" id="315">315</a>
-<a href="#316" id="316">316</a>
-<a href="#317" id="317">317</a>
-<a href="#318" id="318">318</a>
-<a href="#319" id="319">319</a>
-<a href="#320" id="320">320</a>
-<a href="#321" id="321">321</a>
-<a href="#322" id="322">322</a>
-<a href="#323" id="323">323</a>
-<a href="#324" id="324">324</a>
-<a href="#325" id="325">325</a>
-<a href="#326" id="326">326</a>
 </pre></div><pre class="rust"><code><span class="doccomment">//! Internal proxy is accepting connection from local layers and forward it to agent
 //! while having 1:1 relationship - each layer connection is another agent connection.
 //!
@@ -337,104 +325,81 @@
 //! or let the [`OperatorApi`] handle the connection.
 
 </span><span class="kw">use </span>std::{
-    io::ErrorKind,
+    env,
+    io::Write,
     net::{Ipv4Addr, SocketAddrV4},
     time::Duration,
 };
 
-<span class="kw">use </span>futures::{stream::StreamExt, SinkExt};
-<span class="kw">use </span>mirrord_analytics::{send_analytics, Analytics, CollectAnalytics};
+<span class="kw">use </span>mirrord_analytics::{AnalyticsError, AnalyticsReporter, CollectAnalytics};
 <span class="kw">use </span>mirrord_config::LayerConfig;
+<span class="kw">use </span>mirrord_intproxy::{agent_conn::AgentConnectInfo, IntProxy};
 <span class="kw">use </span>mirrord_kube::api::{kubernetes::KubernetesAPI, wrap_raw_connection, AgentManagment};
-<span class="kw">use </span>mirrord_operator::client::{OperatorApi, OperatorSessionInformation};
-<span class="kw">use </span>mirrord_protocol::{pause::DaemonPauseTarget, ClientMessage, DaemonCodec, DaemonMessage};
+<span class="kw">use </span>mirrord_operator::client::{
+    OperatorApi, OperatorSessionConnection, OperatorSessionInformation,
+};
+<span class="kw">use </span>mirrord_protocol::{pause::DaemonPauseTarget, ClientMessage, DaemonMessage};
+<span class="kw">use </span>nix::libc;
 <span class="kw">use </span>tokio::{
     net::{TcpListener, TcpStream},
-    select,
     sync::mpsc,
-    task::{JoinHandle, JoinSet},
-    time::timeout,
+    task::JoinHandle,
 };
 <span class="kw">use </span>tokio_util::sync::CancellationToken;
 <span class="kw">use </span>tracing::{error, info, log::trace};
 
 <span class="kw">use crate</span>::{
-    config::InternalProxyArgs,
-    error::{InternalProxyError, <span class="prelude-ty">Result</span>},
+    connection::AGENT_CONNECT_INFO_ENV_KEY,
+    error::{CliError, InternalProxySetupError, <span class="prelude-ty">Result</span>},
 };
+
+<span class="kw">unsafe fn </span>redirect_fd_to_dev_null(fd: libc::c_int) {
+    <span class="kw">let </span>devnull_fd = libc::open(<span class="string">b&quot;/dev/null\0&quot; </span><span class="kw">as </span><span class="kw-2">*const </span>[u8; <span class="number">10</span>] <span class="kw">as _</span>, libc::O_RDWR);
+    libc::dup2(devnull_fd, fd);
+    libc::close(devnull_fd);
+}
+
+<span class="kw">unsafe fn </span>detach_io() -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+    <span class="comment">// Create a new session for the proxy process, detaching from the original terminal.
+    // This makes the process not to receive signals from the &quot;mirrord&quot; process or it&#39;s parent
+    // terminal fixes some side effects such as https://github.com/metalbear-co/mirrord/issues/1232
+    </span>nix::unistd::setsid().map_err(InternalProxySetupError::SetSidError)<span class="question-mark">?</span>;
+
+    <span class="comment">// flush before redirection
+    </span>{
+        <span class="comment">// best effort
+        </span><span class="kw">let _ </span>= std::io::stdout().lock().flush();
+    }
+    <span class="kw">for </span>fd <span class="kw">in </span>[libc::STDIN_FILENO, libc::STDOUT_FILENO, libc::STDERR_FILENO] {
+        redirect_fd_to_dev_null(fd);
+    }
+    <span class="prelude-val">Ok</span>(())
+}
 
 <span class="doccomment">/// Print the port for the caller (mirrord cli execution flow) so it can pass it
 /// back to the layer instances via env var.
 </span><span class="kw">fn </span>print_port(listener: <span class="kw-2">&amp;</span>TcpListener) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
     <span class="kw">let </span>port = listener
         .local_addr()
-        .map_err(InternalProxyError::LocalPortError)<span class="question-mark">?
+        .map_err(InternalProxySetupError::LocalPortError)<span class="question-mark">?
         </span>.port();
     <span class="macro">println!</span>(<span class="string">&quot;{port}\n&quot;</span>);
     <span class="prelude-val">Ok</span>(())
 }
 
-<span class="doccomment">/// Supposed to run as an async detached task, proxying the connection.
-/// We parse the protocol so we might add some logic here in the future?
-</span><span class="kw">async fn </span>connection_task(
-    stream: TcpStream,
-    agent_connection: (mpsc::Sender&lt;ClientMessage&gt;, mpsc::Receiver&lt;DaemonMessage&gt;),
-) {
-    <span class="kw">let </span><span class="kw-2">mut </span>layer_connection = actix_codec::Framed::new(stream, DaemonCodec::new());
-    <span class="kw">let </span>(agent_sender, <span class="kw-2">mut </span>agent_receiver) = agent_connection;
-    <span class="kw">loop </span>{
-        <span class="macro">select! </span>{
-            layer_message = layer_connection.next() =&gt; {
-                <span class="kw">match </span>layer_message {
-                    <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(layer_message)) =&gt; {
-                        <span class="kw">if let </span><span class="prelude-val">Err</span>(err) = agent_sender.send(layer_message).<span class="kw">await </span>{
-                            <span class="macro">trace!</span>(<span class="string">&quot;Error sending layer message to agent: {err:#?}&quot;</span>);
-                            <span class="kw">break</span>;
-                        }
-                    },
-                    <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="kw-2">ref </span>error)) <span class="kw">if </span>error.kind() == ErrorKind::ConnectionReset =&gt; {
-                        <span class="macro">trace!</span>(<span class="string">&quot;layer connection reset&quot;</span>);
-                        <span class="kw">break</span>;
-                    },
-                    <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(fail)) =&gt; {
-                        <span class="macro">error!</span>(<span class="string">&quot;Error receiving layer message: {fail:#?}&quot;</span>);
-                        <span class="kw">break</span>;
-                    },
-                    <span class="prelude-val">None </span>=&gt; {
-                        <span class="macro">trace!</span>(<span class="string">&quot;layer connection closed&quot;</span>);
-                        <span class="kw">break</span>;
-                    }
-                }
-            },
-            agent_message = agent_receiver.recv() =&gt; {
-                <span class="kw">match </span>agent_message {
-                    <span class="prelude-val">Some</span>(agent_message) =&gt; {
-                        <span class="kw">if let </span><span class="prelude-val">Err</span>(err) = layer_connection.send(agent_message).<span class="kw">await </span>{
-                            <span class="macro">trace!</span>(<span class="string">&quot;Error sending agent message to layer: {err:#?}&quot;</span>);
-                            <span class="kw">break</span>;
-                        }
-                    },
-                    <span class="prelude-val">None </span>=&gt; {
-                        <span class="macro">trace!</span>(<span class="string">&quot;agent connection closed&quot;</span>);
-                        <span class="kw">break</span>;
-                    }
-                }
-            }
-        }
-    }
-}
-
 <span class="doccomment">/// Request target container pause from the connected agent.
 </span><span class="kw">async fn </span>request_pause(
-    sender: <span class="kw-2">&amp;mut </span>mpsc::Sender&lt;ClientMessage&gt;,
+    sender: <span class="kw-2">&amp;</span>mpsc::Sender&lt;ClientMessage&gt;,
     receiver: <span class="kw-2">&amp;mut </span>mpsc::Receiver&lt;DaemonMessage&gt;,
-) -&gt; <span class="prelude-ty">Result</span>&lt;(), InternalProxyError&gt; {
+) -&gt; <span class="prelude-ty">Result</span>&lt;(), InternalProxySetupError&gt; {
     <span class="macro">info!</span>(<span class="string">&quot;Requesting target container pause from the agent&quot;</span>);
     sender
         .send(ClientMessage::PauseTargetRequest(<span class="bool-val">true</span>))
         .<span class="kw">await
         </span>.map_err(|<span class="kw">_</span>| {
-            InternalProxyError::PauseError(<span class="string">&quot;Failed to request target container pause.&quot;</span>.to_string())
+            InternalProxySetupError::PauseError(
+                <span class="string">&quot;Failed to request target container pause.&quot;</span>.to_string(),
+            )
         })<span class="question-mark">?</span>;
 
     <span class="kw">match </span>receiver.recv().<span class="kw">await </span>{
@@ -449,38 +414,79 @@
             }
             <span class="prelude-val">Ok</span>(())
         }
-        msg =&gt; <span class="prelude-val">Err</span>(InternalProxyError::PauseError(<span class="macro">format!</span>(
+        msg =&gt; <span class="prelude-val">Err</span>(InternalProxySetupError::PauseError(<span class="macro">format!</span>(
             <span class="string">&quot;Failed pausing, got invalid answer: {msg:#?}&quot;
         </span>))),
     }
 }
 
+<span class="doccomment">/// Creates a listening socket using socket2
+/// to control the backlog and manage scenarios where
+/// the proxy is under heavy load.
+/// https://github.com/metalbear-co/mirrord/issues/1716#issuecomment-1663736500
+/// in macOS backlog is documented to be hardcoded limited to 128.
+</span><span class="kw">fn </span>create_listen_socket() -&gt; <span class="prelude-ty">Result</span>&lt;TcpListener, InternalProxySetupError&gt; {
+    <span class="kw">let </span>socket = socket2::Socket::new(
+        socket2::Domain::IPV4,
+        socket2::Type::STREAM,
+        <span class="prelude-val">Some</span>(socket2::Protocol::TCP),
+    )
+    .map_err(InternalProxySetupError::ListenError)<span class="question-mark">?</span>;
+
+    socket
+        .bind(<span class="kw-2">&amp;</span>socket2::SockAddr::from(SocketAddrV4::new(
+            Ipv4Addr::LOCALHOST,
+            <span class="number">0</span>,
+        )))
+        .map_err(InternalProxySetupError::ListenError)<span class="question-mark">?</span>;
+    socket
+        .listen(<span class="number">1024</span>)
+        .map_err(InternalProxySetupError::ListenError)<span class="question-mark">?</span>;
+
+    socket
+        .set_nonblocking(<span class="bool-val">true</span>)
+        .map_err(InternalProxySetupError::ListenError)<span class="question-mark">?</span>;
+
+    <span class="comment">// socket2 -&gt; std -&gt; tokio
+    </span>TcpListener::from_std(socket.into()).map_err(InternalProxySetupError::ListenError)
+}
+
+<span class="kw">fn </span>get_agent_connect_info() -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;AgentConnectInfo&gt;&gt; {
+    <span class="kw">let </span><span class="prelude-val">Ok</span>(var) = env::var(AGENT_CONNECT_INFO_ENV_KEY) <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>);
+    };
+
+    serde_json::from_str(<span class="kw-2">&amp;</span>var).map_err(|e| CliError::ConnectInfoLoadFailed(var, e))
+}
+
 <span class="doccomment">/// Main entry point for the internal proxy.
 /// It listens for inbound layer connect and forwards to agent.
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">async fn </span>proxy(args: InternalProxyArgs) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-    <span class="comment">// Create a new session for the proxy process, detaching from the original terminal.
-    // This makes the process not to receive signals from the &quot;mirrord&quot; process or it&#39;s parent
-    // terminal fixes some side effects such as https://github.com/metalbear-co/mirrord/issues/1232
-    </span>nix::unistd::setsid().map_err(InternalProxyError::SetSidError)<span class="question-mark">?</span>;
-    <span class="kw">let </span>started = std::time::Instant::now();
-    <span class="comment">// Let it assign port for us then print it for the user.
-    </span><span class="kw">let </span>listener = TcpListener::bind(SocketAddrV4::new(Ipv4Addr::LOCALHOST, <span class="number">0</span>))
-        .<span class="kw">await
-        </span>.map_err(InternalProxyError::ListenError)<span class="question-mark">?</span>;
-
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">async fn </span>proxy(watch: drain::Watch) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
     <span class="kw">let </span>config = LayerConfig::from_env()<span class="question-mark">?</span>;
+    <span class="kw">let </span>agent_connect_info = get_agent_connect_info()<span class="question-mark">?</span>;
+
+    <span class="kw">let </span><span class="kw-2">mut </span>analytics = AnalyticsReporter::new(config.telemetry, watch);
+    (<span class="kw-2">&amp;</span>config).collect_analytics(analytics.get_mut());
+
+    <span class="comment">// Let it assign port for us then print it for the user.
+    </span><span class="kw">let </span>listener = create_listen_socket()<span class="question-mark">?</span>;
+
     <span class="comment">// Create a main connection, that will be held until proxy is closed.
     // This will guarantee agent staying alive and will enable us to
     // make the agent close on last connection close immediately (will help in tests)
-    </span><span class="kw">let </span>(<span class="kw-2">mut </span>main_connection, operator) = connect_and_ping(<span class="kw-2">&amp;</span>config).<span class="kw">await</span><span class="question-mark">?</span>;
+    </span><span class="kw">let </span><span class="kw-2">mut </span>main_connection =
+        connect_and_ping(<span class="kw-2">&amp;</span>config, agent_connect_info.clone(), <span class="prelude-val">Some</span>(<span class="kw-2">&amp;mut </span>analytics))
+            .<span class="kw">await
+            </span>.inspect_err(|<span class="kw">_</span>| analytics.set_error(AnalyticsError::AgentConnection))<span class="question-mark">?</span>;
+
     <span class="kw">if </span>config.pause {
         tokio::time::timeout(
             Duration::from_secs(config.agent.communication_timeout.unwrap_or(<span class="number">30</span>).into()),
-            request_pause(<span class="kw-2">&amp;mut </span>main_connection.<span class="number">0</span>, <span class="kw-2">&amp;mut </span>main_connection.<span class="number">1</span>),
+            request_pause(<span class="kw-2">&amp;</span>main_connection.<span class="number">0</span>, <span class="kw-2">&amp;mut </span>main_connection.<span class="number">1</span>),
         )
         .<span class="kw">await
         </span>.map_err(|<span class="kw">_</span>| {
-            InternalProxyError::PauseError(
+            InternalProxySetupError::PauseError(
                 <span class="string">&quot;Timeout requesting for target container pause.&quot;</span>.to_string(),
             )
         })<span class="question-mark">??</span>;
@@ -491,59 +497,27 @@
 
     print_port(<span class="kw-2">&amp;</span>listener)<span class="question-mark">?</span>;
 
-    <span class="comment">// wait for first connection `FIRST_CONNECTION_TIMEOUT` seconds, or timeout.
-    </span><span class="kw">let </span>(stream, <span class="kw">_</span>) = timeout(Duration::from_secs(args.timeout), listener.accept())
-        .<span class="kw">await
-        </span>.map_err(|<span class="kw">_</span>| InternalProxyError::FirstConnectionTimeout)<span class="question-mark">?
-        </span>.map_err(InternalProxyError::AcceptError)<span class="question-mark">?</span>;
-
-    <span class="kw">let </span><span class="kw-2">mut </span>active_connections = JoinSet::new();
-
-    <span class="kw">let </span>(agent_connection, <span class="kw">_</span>) = connect_and_ping(<span class="kw-2">&amp;</span>config).<span class="kw">await</span><span class="question-mark">?</span>;
-    active_connections.spawn(connection_task(stream, agent_connection));
-
-    <span class="kw">loop </span>{
-        <span class="macro">tokio::select! </span>{
-            res = listener.accept() =&gt; {
-                <span class="kw">match </span>res {
-                    <span class="prelude-val">Ok</span>((stream, <span class="kw">_</span>)) =&gt; {
-                        <span class="kw">let </span>(agent_connection, <span class="kw">_</span>) = connect_and_ping(<span class="kw-2">&amp;</span>config).<span class="kw">await</span><span class="question-mark">?</span>;
-                        active_connections.spawn(connection_task(stream, agent_connection));
-                    },
-                    <span class="prelude-val">Err</span>(err) =&gt; {
-                        <span class="macro">error!</span>(<span class="string">&quot;Error accepting connection: {err:#?}&quot;</span>);
-                        <span class="kw">break</span>;
-                    }
-                }
-            },
-            <span class="kw">_ </span>= active_connections.join_next(), <span class="kw">if </span>!active_connections.is_empty() =&gt; {},
-            <span class="kw">_ </span>= main_connection_cancellation_token.cancelled() =&gt; { <span class="kw">break</span>; }
-            <span class="kw">_ </span>= tokio::time::sleep(Duration::from_secs(<span class="number">5</span>)) =&gt; {
-                <span class="kw">if </span>active_connections.is_empty() {
-                    <span class="kw">break</span>;
-                }
-            }
-        }
+    <span class="kw">unsafe </span>{
+        detach_io()<span class="question-mark">?</span>;
     }
+
+    <span class="kw">let </span>first_connection_timeout = Duration::from_secs(config.internal_proxy.start_idle_timeout);
+    <span class="kw">let </span>consecutive_connection_timeout = Duration::from_secs(config.internal_proxy.idle_timeout);
+
+    IntProxy::new(<span class="kw-2">&amp;</span>config, agent_connect_info, listener)
+        .<span class="kw">await</span><span class="question-mark">?
+        </span>.run(first_connection_timeout, consecutive_connection_timeout)
+        .<span class="kw">await</span><span class="question-mark">?</span>;
+
     main_connection_cancellation_token.cancel();
 
-    <span class="kw">let </span><span class="kw-2">mut </span>analytics = Analytics::default();
-    (<span class="kw-2">&amp;</span>config).collect_analytics(<span class="kw-2">&amp;mut </span>analytics);
-    <span class="kw">if </span>config.telemetry {
-        send_analytics(
-            analytics,
-            started.elapsed().as_secs().try_into().unwrap_or(u32::MAX),
-            operator,
-        )
-        .<span class="kw">await</span>;
-    }
-
+    <span class="macro">trace!</span>(<span class="string">&quot;intproxy joining main connection task&quot;</span>);
     <span class="kw">match </span>main_connection_task_join.<span class="kw">await </span>{
         <span class="prelude-val">Ok</span>(<span class="prelude-val">Err</span>(err)) =&gt; <span class="prelude-val">Err</span>(err.into()),
         <span class="prelude-val">Err</span>(err) =&gt; {
-            <span class="macro">error!</span>(<span class="string">&quot;internal_proxy connection paniced {err}&quot;</span>);
+            <span class="macro">error!</span>(<span class="string">&quot;internal_proxy connection panicked {err}&quot;</span>);
 
-            <span class="prelude-val">Err</span>(InternalProxyError::AgentClosedConnection.into())
+            <span class="prelude-val">Err</span>(InternalProxySetupError::AgentClosedConnection.into())
         }
         <span class="kw">_ </span>=&gt; <span class="prelude-val">Ok</span>(()),
     }
@@ -554,24 +528,23 @@
 /// sending the first message
 </span><span class="kw">async fn </span>connect_and_ping(
     config: <span class="kw-2">&amp;</span>LayerConfig,
-) -&gt; <span class="prelude-ty">Result</span>&lt;(
-    (mpsc::Sender&lt;ClientMessage&gt;, mpsc::Receiver&lt;DaemonMessage&gt;),
-    bool,
-)&gt; {
-    <span class="kw">let </span>((<span class="kw-2">mut </span>sender, <span class="kw-2">mut </span>receiver), operator) = connect(config).<span class="kw">await</span><span class="question-mark">?</span>;
-    ping(<span class="kw-2">&amp;mut </span>sender, <span class="kw-2">&amp;mut </span>receiver).<span class="kw">await</span><span class="question-mark">?</span>;
-    <span class="prelude-val">Ok</span>(((sender, receiver), operator))
+    agent_connect_info: <span class="prelude-ty">Option</span>&lt;AgentConnectInfo&gt;,
+    analytics: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;mut </span>AnalyticsReporter&gt;,
+) -&gt; <span class="prelude-ty">Result</span>&lt;(mpsc::Sender&lt;ClientMessage&gt;, mpsc::Receiver&lt;DaemonMessage&gt;)&gt; {
+    <span class="kw">let </span>((sender, <span class="kw-2">mut </span>receiver), <span class="kw">_</span>) = connect(config, agent_connect_info, analytics).<span class="kw">await</span><span class="question-mark">?</span>;
+    ping(<span class="kw-2">&amp;</span>sender, <span class="kw-2">&amp;mut </span>receiver).<span class="kw">await</span><span class="question-mark">?</span>;
+    <span class="prelude-val">Ok</span>((sender, receiver))
 }
 
 <span class="doccomment">/// Sends a ping the connection and expects a pong.
 </span><span class="kw">async fn </span>ping(
-    sender: <span class="kw-2">&amp;mut </span>mpsc::Sender&lt;ClientMessage&gt;,
+    sender: <span class="kw-2">&amp;</span>mpsc::Sender&lt;ClientMessage&gt;,
     receiver: <span class="kw-2">&amp;mut </span>mpsc::Receiver&lt;DaemonMessage&gt;,
-) -&gt; <span class="prelude-ty">Result</span>&lt;(), InternalProxyError&gt; {
+) -&gt; <span class="prelude-ty">Result</span>&lt;(), InternalProxySetupError&gt; {
     sender.send(ClientMessage::Ping).<span class="kw">await</span><span class="question-mark">?</span>;
     <span class="kw">match </span>receiver.recv().<span class="kw">await </span>{
         <span class="prelude-val">Some</span>(DaemonMessage::Pong) =&gt; <span class="prelude-val">Ok</span>(()),
-        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(InternalProxyError::AgentClosedConnection),
+        <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(InternalProxySetupError::AgentClosedConnection),
     }
 }
 
@@ -579,7 +552,7 @@
     <span class="kw-2">mut </span>connection: (mpsc::Sender&lt;ClientMessage&gt;, mpsc::Receiver&lt;DaemonMessage&gt;),
 ) -&gt; (
     CancellationToken,
-    JoinHandle&lt;<span class="prelude-ty">Result</span>&lt;(), InternalProxyError&gt;&gt;,
+    JoinHandle&lt;<span class="prelude-ty">Result</span>&lt;(), InternalProxySetupError&gt;&gt;,
 ) {
     <span class="kw">let </span>cancellation_token = CancellationToken::new();
 
@@ -593,7 +566,7 @@
             <span class="kw">loop </span>{
                 <span class="macro">tokio::select! </span>{
                     <span class="kw">_ </span>= main_keep_interval.tick() =&gt; {
-                        <span class="kw">if let </span><span class="prelude-val">Err</span>(err) = ping(<span class="kw-2">&amp;mut </span>connection.<span class="number">0</span>, <span class="kw-2">&amp;mut </span>connection.<span class="number">1</span>).<span class="kw">await </span>{
+                        <span class="kw">if let </span><span class="prelude-val">Err</span>(err) = ping(<span class="kw-2">&amp;</span>connection.<span class="number">0</span>, <span class="kw-2">&amp;mut </span>connection.<span class="number">1</span>).<span class="kw">await </span>{
                             cancellation_token.cancel();
 
                             <span class="kw">return </span><span class="prelude-val">Err</span>(err);
@@ -624,30 +597,33 @@
 /// Returns the tx/rx and whether the operator is used.
 </span><span class="kw">async fn </span>connect(
     config: <span class="kw-2">&amp;</span>LayerConfig,
+    agent_connect_info: <span class="prelude-ty">Option</span>&lt;AgentConnectInfo&gt;,
+    analytics: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;mut </span>AnalyticsReporter&gt;,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;(
     (mpsc::Sender&lt;ClientMessage&gt;, mpsc::Receiver&lt;DaemonMessage&gt;),
-    bool,
+    <span class="prelude-ty">Option</span>&lt;OperatorSessionInformation&gt;,
 )&gt; {
-    <span class="kw">if let </span><span class="prelude-val">Some</span>(operator_session_information) = OperatorSessionInformation::from_env()<span class="question-mark">? </span>{
-        <span class="prelude-val">Ok</span>((
-            OperatorApi::connect(config, <span class="kw-2">&amp;</span>operator_session_information).<span class="kw">await</span><span class="question-mark">?</span>,
-            <span class="bool-val">true</span>,
-        ))
-    } <span class="kw">else if let </span><span class="prelude-val">Some</span>(address) = <span class="kw-2">&amp;</span>config.connect_tcp {
-        <span class="kw">let </span>stream = TcpStream::connect(address)
-            .<span class="kw">await
-            </span>.map_err(InternalProxyError::TcpConnectError)<span class="question-mark">?</span>;
-        <span class="prelude-val">Ok</span>((wrap_raw_connection(stream), <span class="bool-val">false</span>))
-    } <span class="kw">else if let </span>(<span class="prelude-val">Some</span>(agent_name), <span class="prelude-val">Some</span>(port)) =
-        (<span class="kw-2">&amp;</span>config.connect_agent_name, config.connect_agent_port)
-    {
-        <span class="kw">let </span>k8s_api = KubernetesAPI::create(config).<span class="kw">await</span><span class="question-mark">?</span>;
-        <span class="kw">let </span>connection = k8s_api
-            .create_connection((agent_name.clone(), port))
-            .<span class="kw">await</span><span class="question-mark">?</span>;
-        <span class="prelude-val">Ok</span>((connection, <span class="bool-val">false</span>))
-    } <span class="kw">else </span>{
-        <span class="prelude-val">Err</span>(InternalProxyError::NoConnectionMethod.into())
+    <span class="kw">match </span>agent_connect_info {
+        <span class="prelude-val">Some</span>(AgentConnectInfo::Operator(operator_session_information)) =&gt; {
+            <span class="kw">let </span>OperatorSessionConnection { tx, rx, info } =
+                OperatorApi::connect(config, operator_session_information, analytics).<span class="kw">await</span><span class="question-mark">?</span>;
+            <span class="prelude-val">Ok</span>(((tx, rx), <span class="prelude-val">Some</span>(info)))
+        }
+        <span class="prelude-val">Some</span>(AgentConnectInfo::DirectKubernetes(connect_info)) =&gt; {
+            <span class="kw">let </span>k8s_api = KubernetesAPI::create(config).<span class="kw">await</span><span class="question-mark">?</span>;
+            <span class="kw">let </span>connection = k8s_api.create_connection(connect_info).<span class="kw">await</span><span class="question-mark">?</span>;
+            <span class="prelude-val">Ok</span>((connection, <span class="prelude-val">None</span>))
+        }
+        <span class="prelude-val">None </span>=&gt; {
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(address) = <span class="kw-2">&amp;</span>config.connect_tcp {
+                <span class="kw">let </span>stream = TcpStream::connect(address)
+                    .<span class="kw">await
+                    </span>.map_err(InternalProxySetupError::TcpConnectError)<span class="question-mark">?</span>;
+                <span class="prelude-val">Ok</span>((wrap_raw_connection(stream), <span class="prelude-val">None</span>))
+            } <span class="kw">else </span>{
+                <span class="prelude-val">Err</span>(InternalProxySetupError::NoConnectionMethod.into())
+            }
+        }
     }
 }
 </code></pre></div></section></main></body></html>

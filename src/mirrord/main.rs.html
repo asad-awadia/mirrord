@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/cli/src/main.rs`."><title>main.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c609da59d 2023-04-18)" data-search-js="search-e077946657036a58.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-7bfb4c59cc6bc502.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-905937fbbdc8e9ea.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-1a524efa7bd4ab32.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/cli/src/main.rs`."><title>main.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-47e7ab555ef2818a.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.0-nightly (e3abbd499 2023-09-06)" data-channel="nightly" data-search-js="search-5d3eaacf19ebf04f.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-f194925aa375ae96.css" data-theme-dark-css="dark-1dd4d1ce031e15de.css" data-theme-ayu-css="ayu-49e58d069f567085.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ef3a2de404864b0b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-f194925aa375ae96.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1dd4d1ce031e15de.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -441,14 +441,81 @@
 <a href="#441" id="441">441</a>
 <a href="#442" id="442">442</a>
 <a href="#443" id="443">443</a>
+<a href="#444" id="444">444</a>
+<a href="#445" id="445">445</a>
+<a href="#446" id="446">446</a>
+<a href="#447" id="447">447</a>
+<a href="#448" id="448">448</a>
+<a href="#449" id="449">449</a>
+<a href="#450" id="450">450</a>
+<a href="#451" id="451">451</a>
+<a href="#452" id="452">452</a>
+<a href="#453" id="453">453</a>
+<a href="#454" id="454">454</a>
+<a href="#455" id="455">455</a>
+<a href="#456" id="456">456</a>
+<a href="#457" id="457">457</a>
+<a href="#458" id="458">458</a>
+<a href="#459" id="459">459</a>
+<a href="#460" id="460">460</a>
+<a href="#461" id="461">461</a>
+<a href="#462" id="462">462</a>
+<a href="#463" id="463">463</a>
+<a href="#464" id="464">464</a>
+<a href="#465" id="465">465</a>
+<a href="#466" id="466">466</a>
+<a href="#467" id="467">467</a>
+<a href="#468" id="468">468</a>
+<a href="#469" id="469">469</a>
+<a href="#470" id="470">470</a>
+<a href="#471" id="471">471</a>
+<a href="#472" id="472">472</a>
+<a href="#473" id="473">473</a>
+<a href="#474" id="474">474</a>
+<a href="#475" id="475">475</a>
+<a href="#476" id="476">476</a>
+<a href="#477" id="477">477</a>
+<a href="#478" id="478">478</a>
+<a href="#479" id="479">479</a>
+<a href="#480" id="480">480</a>
+<a href="#481" id="481">481</a>
+<a href="#482" id="482">482</a>
+<a href="#483" id="483">483</a>
+<a href="#484" id="484">484</a>
+<a href="#485" id="485">485</a>
+<a href="#486" id="486">486</a>
+<a href="#487" id="487">487</a>
+<a href="#488" id="488">488</a>
+<a href="#489" id="489">489</a>
+<a href="#490" id="490">490</a>
+<a href="#491" id="491">491</a>
+<a href="#492" id="492">492</a>
+<a href="#493" id="493">493</a>
+<a href="#494" id="494">494</a>
+<a href="#495" id="495">495</a>
+<a href="#496" id="496">496</a>
+<a href="#497" id="497">497</a>
+<a href="#498" id="498">498</a>
+<a href="#499" id="499">499</a>
+<a href="#500" id="500">500</a>
+<a href="#501" id="501">501</a>
+<a href="#502" id="502">502</a>
+<a href="#503" id="503">503</a>
+<a href="#504" id="504">504</a>
+<a href="#505" id="505">505</a>
+<a href="#506" id="506">506</a>
+<a href="#507" id="507">507</a>
+<a href="#508" id="508">508</a>
+<a href="#509" id="509">509</a>
 </pre></div><pre class="rust"><code><span class="attr">#![feature(let_chains)]
 #![feature(lazy_cell)]
 #![feature(result_option_inspect)]
 #![warn(clippy::indexing_slicing)]
 
-</span><span class="kw">use </span>std::{collections::HashMap, sync::LazyLock, time::Duration};
+</span><span class="kw">use </span>std::{collections::HashMap, time::Duration};
 
-<span class="kw">use </span>clap::Parser;
+<span class="kw">use </span>clap::{CommandFactory, Parser};
+<span class="kw">use </span>clap_complete::generate;
 <span class="kw">use </span>config::<span class="kw-2">*</span>;
 <span class="kw">use </span>email_address::EmailAddress;
 <span class="kw">use </span>exec::execvp;
@@ -461,16 +528,19 @@
 };
 <span class="kw">use </span>kube::api::ListParams;
 <span class="kw">use </span>miette::JSONReportHandler;
-<span class="kw">use </span>mirrord_config::{config::MirrordConfig, LayerConfig, LayerFileConfig};
+<span class="kw">use </span>mirrord_analytics::{AnalyticsError, AnalyticsReporter, CollectAnalytics};
+<span class="kw">use </span>mirrord_config::{
+    config::{ConfigContext, MirrordConfig},
+    LayerConfig, LayerFileConfig,
+};
 <span class="kw">use </span>mirrord_kube::{
     api::{
         container::SKIP_NAMES,
-        get_k8s_resource_api,
-        kubernetes::{create_kube_api, rollout::Rollout},
+        kubernetes::{create_kube_api, get_k8s_resource_api, rollout::Rollout},
     },
     error::KubeApiError,
 };
-<span class="kw">use </span>mirrord_progress::{Progress, ProgressMode, TaskProgress};
+<span class="kw">use </span>mirrord_progress::{Progress, ProgressTracker};
 <span class="kw">use </span>operator::operator_command;
 <span class="kw">use </span>semver::Version;
 <span class="kw">use </span>serde::de::DeserializeOwned;
@@ -487,12 +557,70 @@
 <span class="kw">mod </span>extract;
 <span class="kw">mod </span>internal_proxy;
 <span class="kw">mod </span>operator;
+<span class="kw">mod </span>verify_config;
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span>error::{CliError, <span class="prelude-ty">Result</span>};
+<span class="kw">use </span>verify_config::verify_config;
 
-<span class="kw">async fn </span>exec(args: <span class="kw-2">&amp;</span>ExecArgs, progress: <span class="kw-2">&amp;</span>TaskProgress) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<span class="kw">async fn </span>exec_process&lt;P&gt;(
+    config: LayerConfig,
+    args: <span class="kw-2">&amp;</span>ExecArgs,
+    progress: <span class="kw-2">&amp;</span>P,
+    analytics: <span class="kw-2">&amp;mut </span>AnalyticsReporter,
+) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt;
+<span class="kw">where
+    </span>P: Progress + Send + Sync,
+{
+    <span class="kw">let </span><span class="kw-2">mut </span>sub_progress = progress.subtask(<span class="string">&quot;preparing to launch process&quot;</span>);
+
+    <span class="attr">#[cfg(target_os = <span class="string">&quot;macos&quot;</span>)]
+    </span><span class="kw">let </span>execution_info =
+        MirrordExecution::start(<span class="kw-2">&amp;</span>config, <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>args.binary), <span class="kw-2">&amp;mut </span>sub_progress, analytics).<span class="kw">await</span><span class="question-mark">?</span>;
+    <span class="attr">#[cfg(not(target_os = <span class="string">&quot;macos&quot;</span>))]
+    </span><span class="kw">let </span>execution_info = MirrordExecution::start(<span class="kw-2">&amp;</span>config, <span class="kw-2">&amp;mut </span>sub_progress, analytics).<span class="kw">await</span><span class="question-mark">?</span>;
+
+    <span class="attr">#[cfg(target_os = <span class="string">&quot;macos&quot;</span>)]
+    </span><span class="kw">let </span>(_did_sip_patch, binary) = <span class="kw">match </span>execution_info.patched_path {
+        <span class="prelude-val">None </span>=&gt; (<span class="bool-val">false</span>, args.binary.clone()),
+        <span class="prelude-val">Some</span>(sip_result) =&gt; (<span class="bool-val">true</span>, sip_result),
+    };
+
+    <span class="attr">#[cfg(not(target_os = <span class="string">&quot;macos&quot;</span>))]
+    </span><span class="kw">let </span>binary = args.binary.clone();
+
+    <span class="comment">// Stop confusion with layer
+    </span>std::env::set_var(mirrord_progress::MIRRORD_PROGRESS_ENV, <span class="string">&quot;off&quot;</span>);
+
+    <span class="comment">// Set environment variables from agent + layer settings.
+    </span><span class="kw">for </span>(key, value) <span class="kw">in </span><span class="kw-2">&amp;</span>execution_info.environment {
+        std::env::set_var(key, value);
+    }
+
+    <span class="kw">let </span><span class="kw-2">mut </span>binary_args = args.binary_args.clone();
+    <span class="comment">// Put original executable in argv[0] even if actually running patched version.
+    </span>binary_args.insert(<span class="number">0</span>, args.binary.clone());
+
+    sub_progress.success(<span class="prelude-val">Some</span>(<span class="string">&quot;ready to launch process&quot;</span>));
+    <span class="comment">// The execve hook is not yet active and does not hijack this call.
+    </span><span class="kw">let </span>err = execvp(binary.clone(), binary_args.clone());
+    <span class="macro">error!</span>(<span class="string">&quot;Couldn&#39;t execute {:?}&quot;</span>, err);
+    analytics.set_error(AnalyticsError::BinaryExecuteFailed);
+    <span class="attr">#[cfg(all(target_os = <span class="string">&quot;macos&quot;</span>, target_arch = <span class="string">&quot;aarch64&quot;</span>))]
+    </span><span class="kw">if let </span>exec::Error::Errno(errno) = err {
+        <span class="kw">if </span>Into::&lt;i32&gt;::into(errno) == <span class="number">86 </span>{
+            <span class="comment">// &quot;Bad CPU type in executable&quot;
+            </span><span class="kw">if </span>_did_sip_patch {
+                <span class="kw">return </span><span class="prelude-val">Err</span>(CliError::RosettaMissing(binary));
+            }
+        }
+    }
+    <span class="prelude-val">Err</span>(CliError::BinaryExecuteFailed(binary, binary_args))
+}
+
+<span class="kw">async fn </span>exec(args: <span class="kw-2">&amp;</span>ExecArgs, watch: drain::Watch) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+    <span class="kw">let </span>progress = ProgressTracker::from_env(<span class="string">&quot;mirrord exec&quot;</span>);
     <span class="kw">if </span>!args.disable_version_check {
-        prompt_outdated_version().<span class="kw">await</span>;
+        prompt_outdated_version(<span class="kw-2">&amp;</span>progress).<span class="kw">await</span>;
     }
     <span class="macro">info!</span>(
         <span class="string">&quot;Launching {:?} with arguments {:?}&quot;</span>,
@@ -588,6 +716,10 @@
         std::env::set_var(<span class="string">&quot;MIRRORD_UDP_OUTGOING&quot;</span>, <span class="string">&quot;false&quot;</span>);
     }
 
+    <span class="kw">if let </span><span class="prelude-val">Some</span>(context) = <span class="kw-2">&amp;</span>args.context {
+        std::env::set_var(<span class="string">&quot;MIRRORD_KUBE_CONTEXT&quot;</span>, context);
+    }
+
     <span class="kw">if let </span><span class="prelude-val">Some</span>(config_file) = <span class="kw-2">&amp;</span>args.config_file {
         <span class="comment">// Set canoncialized path to config file, in case forks/children are in different
         // working directories.
@@ -596,51 +728,23 @@
         std::env::set_var(<span class="string">&quot;MIRRORD_CONFIG_FILE&quot;</span>, full_path);
     }
 
-    <span class="kw">let </span>sub_progress = progress.subtask(<span class="string">&quot;preparing to launch process&quot;</span>);
+    <span class="kw">let </span>(config, <span class="kw-2">mut </span>context) = LayerConfig::from_env_with_warnings()<span class="question-mark">?</span>;
 
-    <span class="kw">let </span>config = LayerConfig::from_env()<span class="question-mark">?</span>;
+    <span class="kw">let </span><span class="kw-2">mut </span>analytics = AnalyticsReporter::only_error(config.telemetry, watch);
+    (<span class="kw-2">&amp;</span>config).collect_analytics(analytics.get_mut());
 
-    <span class="attr">#[cfg(target_os = <span class="string">&quot;macos&quot;</span>)]
-    </span><span class="kw">let </span>execution_info =
-        MirrordExecution::start(<span class="kw-2">&amp;</span>config, <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>args.binary), progress, <span class="prelude-val">None</span>).<span class="kw">await</span><span class="question-mark">?</span>;
-    <span class="attr">#[cfg(not(target_os = <span class="string">&quot;macos&quot;</span>))]
-    </span><span class="kw">let </span>execution_info = MirrordExecution::start(<span class="kw-2">&amp;</span>config, progress, <span class="prelude-val">None</span>).<span class="kw">await</span><span class="question-mark">?</span>;
-
-    <span class="attr">#[cfg(target_os = <span class="string">&quot;macos&quot;</span>)]
-    </span><span class="kw">let </span>(_did_sip_patch, binary) = <span class="kw">match </span>execution_info.patched_path {
-        <span class="prelude-val">None </span>=&gt; (<span class="bool-val">false</span>, args.binary.clone()),
-        <span class="prelude-val">Some</span>(sip_result) =&gt; (<span class="bool-val">true</span>, sip_result),
-    };
-
-    <span class="attr">#[cfg(not(target_os = <span class="string">&quot;macos&quot;</span>))]
-    </span><span class="kw">let </span>binary = args.binary.clone();
-
-    <span class="comment">// Stop confusion with layer
-    </span>std::env::set_var(mirrord_progress::MIRRORD_PROGRESS_ENV, <span class="string">&quot;off&quot;</span>);
-
-    <span class="comment">// Set environment variables from agent + layer settings.
-    </span><span class="kw">for </span>(key, value) <span class="kw">in </span><span class="kw-2">&amp;</span>execution_info.environment {
-        std::env::set_var(key, value);
+    config.verify(<span class="kw-2">&amp;mut </span>context)<span class="question-mark">?</span>;
+    <span class="kw">for </span>warning <span class="kw">in </span>context.get_warnings() {
+        progress.warning(warning);
     }
 
-    <span class="kw">let </span><span class="kw-2">mut </span>binary_args = args.binary_args.clone();
-    <span class="comment">// Put original executable in argv[0] even if actually running patched version.
-    </span>binary_args.insert(<span class="number">0</span>, args.binary.clone());
+    <span class="kw">let </span>execution_result = exec_process(config, args, <span class="kw-2">&amp;</span>progress, <span class="kw-2">&amp;mut </span>analytics).<span class="kw">await</span>;
 
-    sub_progress.done_with(<span class="string">&quot;ready to launch process&quot;</span>);
-    <span class="comment">// The execve hook is not yet active and does not hijack this call.
-    </span><span class="kw">let </span>err = execvp(binary.clone(), binary_args.clone());
-    <span class="macro">error!</span>(<span class="string">&quot;Couldn&#39;t execute {:?}&quot;</span>, err);
-    <span class="attr">#[cfg(all(target_os = <span class="string">&quot;macos&quot;</span>, target_arch = <span class="string">&quot;aarch64&quot;</span>))]
-    </span><span class="kw">if let </span>exec::Error::Errno(errno) = err {
-        <span class="kw">if </span>Into::&lt;i32&gt;::into(errno) == <span class="number">86 </span>{
-            <span class="comment">// &quot;Bad CPU type in executable&quot;
-            </span><span class="kw">if </span>_did_sip_patch {
-                <span class="kw">return </span><span class="prelude-val">Err</span>(CliError::RosettaMissing(binary));
-            }
-        }
+    <span class="kw">if </span>execution_result.is_err() &amp;&amp; !analytics.has_error() {
+        analytics.set_error(AnalyticsError::Unknown);
     }
-    <span class="prelude-val">Err</span>(CliError::BinaryExecuteFailed(binary, binary_args))
+
+    execution_result
 }
 
 <span class="doccomment">/// Returns a list of (pod name, [container names]) pairs, filtering out mesh side cars
@@ -673,10 +777,8 @@
                 .as_ref()<span class="question-mark">?
                 </span>.containers
                 .iter()
-                .filter_map(|container| {
-                    <span class="comment">// filter out mesh side cars
-                    </span>(!SKIP_NAMES.contains(container.name.as_str())).then(|| container.name.clone())
-                })
+                .filter(|<span class="kw-2">&amp;</span>container| (!SKIP_NAMES.contains(container.name.as_str())))
+                .map(|container| container.name.clone())
                 .collect();
             <span class="prelude-val">Some</span>((name, containers))
         })
@@ -742,19 +844,22 @@
 ///  &quot;pod/py-serv-deployment-5c57fbdc98-pdbn4/container/py-serv&quot;,
 /// ]```
 </span><span class="kw">async fn </span>print_pod_targets(args: <span class="kw-2">&amp;</span>ListTargetArgs) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-    <span class="kw">let </span>(accept_invalid_certificates, kubeconfig, namespace) =
-        <span class="kw">if let </span><span class="prelude-val">Some</span>(config) = <span class="kw-2">&amp;</span>args.config_file {
-            <span class="kw">let </span>layer_config = LayerFileConfig::from_path(config)<span class="question-mark">?</span>.generate_config()<span class="question-mark">?</span>;
-            (
-                layer_config.accept_invalid_certificates,
-                layer_config.kubeconfig,
-                layer_config.target.namespace,
-            )
-        } <span class="kw">else </span>{
-            (<span class="bool-val">false</span>, <span class="prelude-val">None</span>, <span class="prelude-val">None</span>)
-        };
+    <span class="kw">let </span>(accept_invalid_certificates, kubeconfig, namespace, kube_context) = <span class="kw">if let </span><span class="prelude-val">Some</span>(config) =
+        <span class="kw-2">&amp;</span>args.config_file
+    {
+        <span class="kw">let </span><span class="kw-2">mut </span>cfg_context = ConfigContext::default();
+        <span class="kw">let </span>layer_config = LayerFileConfig::from_path(config)<span class="question-mark">?</span>.generate_config(<span class="kw-2">&amp;mut </span>cfg_context)<span class="question-mark">?</span>;
+        (
+            layer_config.accept_invalid_certificates,
+            layer_config.kubeconfig,
+            layer_config.target.namespace,
+            layer_config.kube_context,
+        )
+    } <span class="kw">else </span>{
+        (<span class="bool-val">false</span>, <span class="prelude-val">None</span>, <span class="prelude-val">None</span>, <span class="prelude-val">None</span>)
+    };
 
-    <span class="kw">let </span>client = create_kube_api(accept_invalid_certificates, kubeconfig)
+    <span class="kw">let </span>client = create_kube_api(accept_invalid_certificates, kubeconfig, kube_context)
         .<span class="kw">await
         </span>.map_err(CliError::KubernetesApiFailed)<span class="question-mark">?</span>;
 
@@ -791,7 +896,7 @@
 
 <span class="doccomment">/// Register the email to the waitlist.
 </span><span class="kw">async fn </span>register_to_waitlist(email: EmailAddress) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-    <span class="kw">const </span>WAITLIST_API: <span class="kw-2">&amp;</span>str = <span class="string">&quot;https://waitlist.metalbear.co/v1/waitlist&quot;</span>;
+    <span class="kw">const </span>WAITLIST_API: <span class="kw-2">&amp;</span>str = <span class="string">&quot;https://waitlist.metalbear.co/v1/waitlist?source=cli&quot;</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>params = HashMap::new();
     params.insert(<span class="string">&quot;email&quot;</span>, email.to_string());
     reqwest::Client::new()
@@ -808,55 +913,79 @@
 
     <span class="prelude-val">Ok</span>(())
 }
-
 <span class="kw">const </span>CURRENT_VERSION: <span class="kw-2">&amp;</span>str = <span class="macro">env!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>);
 
-<span class="attr">#[tokio::main]
-</span><span class="kw">async fn </span>main() -&gt; miette::Result&lt;()&gt; {
+<span class="kw">fn </span>main() -&gt; miette::Result&lt;()&gt; {
     <span class="kw">let </span>cli = Cli::parse();
 
-    <span class="kw">if let </span><span class="prelude-val">Ok</span>(console_addr) = std::env::var(<span class="string">&quot;MIRRORD_CONSOLE_ADDR&quot;</span>) {
-        mirrord_console::init_logger(<span class="kw-2">&amp;</span>console_addr)<span class="question-mark">?</span>;
-    } <span class="kw">else if </span>!init_ext_error_handler(<span class="kw-2">&amp;</span>cli.commands) {
-        registry()
-            .with(fmt::layer().with_writer(std::io::stderr))
-            .with(EnvFilter::from_default_env())
-            .init();
-    }
+    <span class="kw">let </span>rt = tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+        .map_err(CliError::RuntimeError)<span class="question-mark">?</span>;
 
-    <span class="kw">static </span>MAIN_PROGRESS_TASK: LazyLock&lt;TaskProgress&gt; =
-        LazyLock::new(|| TaskProgress::new(<span class="string">&quot;mirrord cli starting...&quot;</span>));
+    <span class="kw">let </span>(signal, watch) = drain::channel();
 
-    <span class="kw">match </span>cli.commands {
-        Commands::Exec(args) =&gt; exec(<span class="kw-2">&amp;</span>args, <span class="kw-2">&amp;</span>MAIN_PROGRESS_TASK.subtask(<span class="string">&quot;exec&quot;</span>)).<span class="kw">await</span><span class="question-mark">?</span>,
-        Commands::Extract { path } =&gt; {
-            extract_library(<span class="prelude-val">Some</span>(path), <span class="kw-2">&amp;</span>MAIN_PROGRESS_TASK.subtask(<span class="string">&quot;extract&quot;</span>), <span class="bool-val">false</span>)<span class="question-mark">?</span>;
+    <span class="kw">let </span>res: <span class="prelude-ty">Result</span>&lt;(), CliError&gt; = rt.block_on(<span class="kw">async move </span>{
+        <span class="kw">if let </span><span class="prelude-val">Ok</span>(console_addr) = std::env::var(<span class="string">&quot;MIRRORD_CONSOLE_ADDR&quot;</span>) {
+            mirrord_console::init_async_logger(<span class="kw-2">&amp;</span>console_addr, watch.clone(), <span class="number">124</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+        } <span class="kw">else if </span>!init_ext_error_handler(<span class="kw-2">&amp;</span>cli.commands) {
+            registry()
+                .with(fmt::layer().with_writer(std::io::stderr))
+                .with(EnvFilter::from_default_env())
+                .init();
         }
-        Commands::ListTargets(args) =&gt; print_pod_targets(<span class="kw-2">&amp;</span>args).<span class="kw">await</span><span class="question-mark">?</span>,
-        Commands::Operator(args) =&gt; operator_command(<span class="kw-2">*</span>args).<span class="kw">await</span><span class="question-mark">?</span>,
-        Commands::ExtensionExec(args) =&gt; {
-            extension_exec(<span class="kw-2">*</span>args, <span class="kw-2">&amp;</span>MAIN_PROGRESS_TASK.subtask(<span class="string">&quot;ext&quot;</span>)).<span class="kw">await</span><span class="question-mark">?
-        </span>}
-        Commands::InternalProxy(args) =&gt; internal_proxy::proxy(<span class="kw-2">*</span>args).<span class="kw">await</span><span class="question-mark">?</span>,
-        Commands::Waitlist(args) =&gt; register_to_waitlist(args.email).<span class="kw">await</span><span class="question-mark">?</span>,
-    }
 
-    <span class="prelude-val">Ok</span>(())
+        <span class="kw">match </span>cli.commands {
+            Commands::Exec(args) =&gt; exec(<span class="kw-2">&amp;</span>args, watch).<span class="kw">await</span><span class="question-mark">?</span>,
+            Commands::Extract { path } =&gt; {
+                extract_library(
+                    <span class="prelude-val">Some</span>(path),
+                    <span class="kw-2">&amp;</span>ProgressTracker::from_env(<span class="string">&quot;mirrord extract library...&quot;</span>),
+                    <span class="bool-val">false</span>,
+                )<span class="question-mark">?</span>;
+            }
+            Commands::ListTargets(args) =&gt; print_pod_targets(<span class="kw-2">&amp;</span>args).<span class="kw">await</span><span class="question-mark">?</span>,
+            Commands::Operator(args) =&gt; operator_command(<span class="kw-2">*</span>args).<span class="kw">await</span><span class="question-mark">?</span>,
+            Commands::ExtensionExec(args) =&gt; {
+                extension_exec(<span class="kw-2">*</span>args, watch).<span class="kw">await</span><span class="question-mark">?</span>;
+            }
+            Commands::InternalProxy =&gt; internal_proxy::proxy(watch).<span class="kw">await</span><span class="question-mark">?</span>,
+            Commands::Waitlist(args) =&gt; register_to_waitlist(args.email).<span class="kw">await</span><span class="question-mark">?</span>,
+            Commands::VerifyConfig(args) =&gt; verify_config(args).<span class="kw">await</span><span class="question-mark">?</span>,
+            Commands::Completions(args) =&gt; {
+                <span class="kw">let </span><span class="kw-2">mut </span>cmd: clap::Command = Cli::command();
+                generate(args.shell, <span class="kw-2">&amp;mut </span>cmd, <span class="string">&quot;mirrord&quot;</span>, <span class="kw-2">&amp;mut </span>std::io::stdout());
+            }
+        };
+        <span class="prelude-val">Ok</span>(())
+    });
+
+    rt.block_on(<span class="kw">async move </span>{
+        tokio::time::timeout(Duration::from_secs(<span class="number">10</span>), signal.drain())
+            .<span class="kw">await
+            </span>.is_err()
+            .then(|| {
+                <span class="macro">warn!</span>(<span class="string">&quot;Failed to drain in a timely manner, ongoing tasks dropped.&quot;</span>);
+            });
+    });
+
+    res.map_err(Into::into)
 }
 
 <span class="comment">// only ls and ext commands need the errors in json format
 // error logs are disabled for extensions
 </span><span class="kw">fn </span>init_ext_error_handler(commands: <span class="kw-2">&amp;</span>Commands) -&gt; bool {
-    <span class="kw">if let </span>Commands::ListTargets(<span class="kw">_</span>) | Commands::ExtensionExec(<span class="kw">_</span>) = commands {
-        mirrord_progress::init_from_env(ProgressMode::Json);
-        <span class="kw">let _ </span>= miette::set_hook(Box::new(|<span class="kw">_</span>| Box::new(JSONReportHandler::new())));
-        <span class="bool-val">true
-    </span>} <span class="kw">else </span>{
-        <span class="bool-val">false
-    </span>}
+    <span class="kw">match </span>commands {
+        Commands::ListTargets(<span class="kw">_</span>) | Commands::ExtensionExec(<span class="kw">_</span>) =&gt; {
+            <span class="kw">let _ </span>= miette::set_hook(Box::new(|<span class="kw">_</span>| Box::new(JSONReportHandler::new())));
+            <span class="bool-val">true
+        </span>}
+        <span class="kw">_ </span>=&gt; <span class="bool-val">false</span>,
+    }
 }
 
-<span class="kw">async fn </span>prompt_outdated_version() {
+<span class="kw">async fn </span>prompt_outdated_version(progress: <span class="kw-2">&amp;</span>ProgressTracker) {
+    <span class="kw">let </span><span class="kw-2">mut </span>progress = progress.subtask(<span class="string">&quot;version check&quot;</span>);
     <span class="kw">let </span>check_version: bool = std::env::var(<span class="string">&quot;MIRRORD_CHECK_VERSION&quot;</span>)
         .map(|s| s.parse().unwrap_or(<span class="bool-val">true</span>))
         .unwrap_or(<span class="bool-val">true</span>);
@@ -876,8 +1005,11 @@
                     <span class="kw">if </span>latest_version &gt; Version::parse(CURRENT_VERSION).unwrap() {
                         <span class="kw">let </span>is_homebrew = which(<span class="string">&quot;mirrord&quot;</span>).ok().map(|mirrord_path| mirrord_path.to_string_lossy().contains(<span class="string">&quot;homebrew&quot;</span>)).unwrap_or_default();
                         <span class="kw">let </span>command = <span class="kw">if </span>is_homebrew { <span class="string">&quot;brew upgrade metalbear-co/mirrord/mirrord&quot; </span>} <span class="kw">else </span>{ <span class="string">&quot;curl -fsSL https://raw.githubusercontent.com/metalbear-co/mirrord/main/scripts/install.sh | bash&quot; </span>};
-                        <span class="macro">println!</span>(<span class="string">&quot;New mirrord version available: {latest_version}. To update, run: `{command:?}`.&quot;</span>);
-                        <span class="macro">println!</span>(<span class="string">&quot;To disable version checks, set env variable MIRRORD_CHECK_VERSION to &#39;false&#39;.&quot;</span>)
+                        progress.print(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;New mirrord version available: {}. To update, run: `{:?}`.&quot;</span>, latest_version, command));
+                        progress.print(<span class="string">&quot;To disable version checks, set env variable MIRRORD_CHECK_VERSION to &#39;false&#39;.&quot;</span>);
+                        progress.success(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;Update to {latest_version} available&quot;</span>)));
+                    } <span class="kw">else </span>{
+                        progress.success(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;Running on latest ({CURRENT_VERSION})!&quot;</span>)));
                     }
                 }
             }

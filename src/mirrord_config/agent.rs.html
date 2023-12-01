@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/config/src/agent.rs`."><title>agent.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord_config" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c609da59d 2023-04-18)" data-search-js="search-e077946657036a58.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-7bfb4c59cc6bc502.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-905937fbbdc8e9ea.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-1a524efa7bd4ab32.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord_config/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/config/src/agent.rs`."><title>agent.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-47e7ab555ef2818a.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord_config" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.0-nightly (e3abbd499 2023-09-06)" data-channel="nightly" data-search-js="search-5d3eaacf19ebf04f.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-f194925aa375ae96.css" data-theme-dark-css="dark-1dd4d1ce031e15de.css" data-theme-ayu-css="ayu-49e58d069f567085.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ef3a2de404864b0b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-f194925aa375ae96.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1dd4d1ce031e15de.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord_config/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -279,9 +279,57 @@
 <a href="#279" id="279">279</a>
 <a href="#280" id="280">280</a>
 <a href="#281" id="281">281</a>
+<a href="#282" id="282">282</a>
+<a href="#283" id="283">283</a>
+<a href="#284" id="284">284</a>
+<a href="#285" id="285">285</a>
+<a href="#286" id="286">286</a>
+<a href="#287" id="287">287</a>
+<a href="#288" id="288">288</a>
+<a href="#289" id="289">289</a>
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
+<a href="#292" id="292">292</a>
+<a href="#293" id="293">293</a>
+<a href="#294" id="294">294</a>
+<a href="#295" id="295">295</a>
+<a href="#296" id="296">296</a>
+<a href="#297" id="297">297</a>
+<a href="#298" id="298">298</a>
+<a href="#299" id="299">299</a>
+<a href="#300" id="300">300</a>
+<a href="#301" id="301">301</a>
+<a href="#302" id="302">302</a>
+<a href="#303" id="303">303</a>
+<a href="#304" id="304">304</a>
+<a href="#305" id="305">305</a>
+<a href="#306" id="306">306</a>
+<a href="#307" id="307">307</a>
+<a href="#308" id="308">308</a>
+<a href="#309" id="309">309</a>
+<a href="#310" id="310">310</a>
+<a href="#311" id="311">311</a>
+<a href="#312" id="312">312</a>
+<a href="#313" id="313">313</a>
+<a href="#314" id="314">314</a>
+<a href="#315" id="315">315</a>
+<a href="#316" id="316">316</a>
+<a href="#317" id="317">317</a>
+<a href="#318" id="318">318</a>
+<a href="#319" id="319">319</a>
+<a href="#320" id="320">320</a>
+<a href="#321" id="321">321</a>
+<a href="#322" id="322">322</a>
+<a href="#323" id="323">323</a>
+<a href="#324" id="324">324</a>
+<a href="#325" id="325">325</a>
+<a href="#326" id="326">326</a>
+<a href="#327" id="327">327</a>
+<a href="#328" id="328">328</a>
+<a href="#329" id="329">329</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>std::collections::HashMap;
 
-<span class="kw">use </span>k8s_openapi::api::core::v1::Toleration;
+<span class="kw">use </span>k8s_openapi::api::core::v1::{ResourceRequirements, Toleration};
 <span class="kw">use </span>mirrord_analytics::CollectAnalytics;
 <span class="kw">use </span>mirrord_config_derive::MirrordConfig;
 <span class="kw">use </span>schemars::JsonSchema;
@@ -357,7 +405,7 @@
     <span class="doccomment">/// ### agent.namespace {#agent-namespace}
     ///
     /// Namespace where the agent shall live.
-    ///
+    /// Note: Doesn&#39;t work with ephemeral containers.
     /// Defaults to the current kubernetes namespace.
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_AGENT_NAMESPACE&quot;</span>)]
     </span><span class="kw">pub </span>namespace: <span class="prelude-ty">Option</span>&lt;String&gt;,
@@ -484,13 +532,55 @@
     ///
     /// Set pod tolerations. (not with ephemeral agents)
     /// Default is
-    /// ```yaml
-    /// tolerations:
-    /// - operator: Exists
+    /// ```json
+    /// [
+    ///   {
+    ///     &quot;operator&quot;: &quot;Exists&quot;
+    ///   }
+    /// ]
     /// ```
     ///
     /// Set to an empty array to have no tolerations at all
     </span><span class="kw">pub </span>tolerations: <span class="prelude-ty">Option</span>&lt;Vec&lt;Toleration&gt;&gt;,
+
+    <span class="doccomment">/// ### agent.resources {#agent-resources}
+    ///
+    /// Set pod resource reqirements. (not with ephemeral agents)
+    /// Default is
+    /// ```json
+    /// {
+    ///   &quot;requests&quot;:
+    ///   {
+    ///     &quot;cpu&quot;: &quot;1m&quot;,
+    ///     &quot;memory&quot;: &quot;1Mi&quot;
+    ///   },
+    ///   &quot;limits&quot;:
+    ///   {
+    ///     &quot;cpu&quot;: &quot;100m&quot;,
+    ///       &quot;memory&quot;: &quot;100Mi&quot;
+    ///   }
+    /// }
+    /// ```
+    </span><span class="kw">pub </span>resources: <span class="prelude-ty">Option</span>&lt;ResourceRequirements&gt;,
+
+    <span class="doccomment">/// ### agent.check_out_of_pods {#agent-check_out_of_pods}
+    ///
+    /// Determine if to check whether there is room for agent job in target node. (Not applicable
+    /// when using ephemeral containers feature)
+    ///
+    /// Can be disabled if the check takes too long and you are sure there is enough resources on
+    /// each node
+    </span><span class="attr">#[config(default = <span class="bool-val">true</span>)]
+    </span><span class="kw">pub </span>check_out_of_pods: bool,
+
+    <span class="doccomment">/// ### agent.privileged {#agent-privileged}
+    ///
+    /// Run the mirror agent as privileged container.
+    /// Defaults to `false`.
+    ///
+    /// Might be needed in strict environments such as Bottlerocket.
+    </span><span class="attr">#[config(default = <span class="bool-val">false</span>)]
+    </span><span class="kw">pub </span>privileged: bool,
 
     <span class="doccomment">/// &lt;!--${internal}--&gt;
     /// Create an agent that returns an error after accepting the first client. For testing
@@ -512,7 +602,10 @@
     <span class="kw">use </span>rstest::rstest;
 
     <span class="kw">use super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use crate</span>::{config::MirrordConfig, util::testing::with_env_vars};
+    <span class="kw">use crate</span>::{
+        config::{ConfigContext, MirrordConfig},
+        util::testing::with_env_vars,
+    };
 
     <span class="attr">#[rstest]
     </span><span class="kw">fn </span>default(
@@ -546,7 +639,10 @@
                 (<span class="string">&quot;MIRRORD_AGENT_STARTUP_TIMEOUT&quot;</span>, startup_timeout.<span class="number">0</span>),
             ],
             || {
-                <span class="kw">let </span>agent = AgentFileConfig::default().generate_config().unwrap();
+                <span class="kw">let </span><span class="kw-2">mut </span>cfg_context = ConfigContext::default();
+                <span class="kw">let </span>agent = AgentFileConfig::default()
+                    .generate_config(<span class="kw-2">&amp;mut </span>cfg_context)
+                    .unwrap();
 
                 <span class="macro">assert_eq!</span>(agent.log_level, log_level.<span class="number">1</span>);
                 <span class="macro">assert_eq!</span>(agent.namespace.as_deref(), namespace.<span class="number">1</span>);

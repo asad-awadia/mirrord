@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/config/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord_config" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (c609da59d 2023-04-18)" data-search-js="search-e077946657036a58.js" data-settings-js="settings-298e1ea74db45b39.js" data-settings-css="settings-7bfb4c59cc6bc502.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-905937fbbdc8e9ea.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-1a524efa7bd4ab32.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord_config/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `mirrord/config/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-47e7ab555ef2818a.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="mirrord_config" data-themes="" data-resource-suffix="" data-rustdoc-version="1.74.0-nightly (e3abbd499 2023-09-06)" data-channel="nightly" data-search-js="search-5d3eaacf19ebf04f.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-f194925aa375ae96.css" data-theme-dark-css="dark-1dd4d1ce031e15de.css" data-theme-ayu-css="ayu-49e58d069f567085.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ef3a2de404864b0b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-f194925aa375ae96.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1dd4d1ce031e15de.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../mirrord_config/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -729,6 +729,126 @@
 <a href="#729" id="729">729</a>
 <a href="#730" id="730">730</a>
 <a href="#731" id="731">731</a>
+<a href="#732" id="732">732</a>
+<a href="#733" id="733">733</a>
+<a href="#734" id="734">734</a>
+<a href="#735" id="735">735</a>
+<a href="#736" id="736">736</a>
+<a href="#737" id="737">737</a>
+<a href="#738" id="738">738</a>
+<a href="#739" id="739">739</a>
+<a href="#740" id="740">740</a>
+<a href="#741" id="741">741</a>
+<a href="#742" id="742">742</a>
+<a href="#743" id="743">743</a>
+<a href="#744" id="744">744</a>
+<a href="#745" id="745">745</a>
+<a href="#746" id="746">746</a>
+<a href="#747" id="747">747</a>
+<a href="#748" id="748">748</a>
+<a href="#749" id="749">749</a>
+<a href="#750" id="750">750</a>
+<a href="#751" id="751">751</a>
+<a href="#752" id="752">752</a>
+<a href="#753" id="753">753</a>
+<a href="#754" id="754">754</a>
+<a href="#755" id="755">755</a>
+<a href="#756" id="756">756</a>
+<a href="#757" id="757">757</a>
+<a href="#758" id="758">758</a>
+<a href="#759" id="759">759</a>
+<a href="#760" id="760">760</a>
+<a href="#761" id="761">761</a>
+<a href="#762" id="762">762</a>
+<a href="#763" id="763">763</a>
+<a href="#764" id="764">764</a>
+<a href="#765" id="765">765</a>
+<a href="#766" id="766">766</a>
+<a href="#767" id="767">767</a>
+<a href="#768" id="768">768</a>
+<a href="#769" id="769">769</a>
+<a href="#770" id="770">770</a>
+<a href="#771" id="771">771</a>
+<a href="#772" id="772">772</a>
+<a href="#773" id="773">773</a>
+<a href="#774" id="774">774</a>
+<a href="#775" id="775">775</a>
+<a href="#776" id="776">776</a>
+<a href="#777" id="777">777</a>
+<a href="#778" id="778">778</a>
+<a href="#779" id="779">779</a>
+<a href="#780" id="780">780</a>
+<a href="#781" id="781">781</a>
+<a href="#782" id="782">782</a>
+<a href="#783" id="783">783</a>
+<a href="#784" id="784">784</a>
+<a href="#785" id="785">785</a>
+<a href="#786" id="786">786</a>
+<a href="#787" id="787">787</a>
+<a href="#788" id="788">788</a>
+<a href="#789" id="789">789</a>
+<a href="#790" id="790">790</a>
+<a href="#791" id="791">791</a>
+<a href="#792" id="792">792</a>
+<a href="#793" id="793">793</a>
+<a href="#794" id="794">794</a>
+<a href="#795" id="795">795</a>
+<a href="#796" id="796">796</a>
+<a href="#797" id="797">797</a>
+<a href="#798" id="798">798</a>
+<a href="#799" id="799">799</a>
+<a href="#800" id="800">800</a>
+<a href="#801" id="801">801</a>
+<a href="#802" id="802">802</a>
+<a href="#803" id="803">803</a>
+<a href="#804" id="804">804</a>
+<a href="#805" id="805">805</a>
+<a href="#806" id="806">806</a>
+<a href="#807" id="807">807</a>
+<a href="#808" id="808">808</a>
+<a href="#809" id="809">809</a>
+<a href="#810" id="810">810</a>
+<a href="#811" id="811">811</a>
+<a href="#812" id="812">812</a>
+<a href="#813" id="813">813</a>
+<a href="#814" id="814">814</a>
+<a href="#815" id="815">815</a>
+<a href="#816" id="816">816</a>
+<a href="#817" id="817">817</a>
+<a href="#818" id="818">818</a>
+<a href="#819" id="819">819</a>
+<a href="#820" id="820">820</a>
+<a href="#821" id="821">821</a>
+<a href="#822" id="822">822</a>
+<a href="#823" id="823">823</a>
+<a href="#824" id="824">824</a>
+<a href="#825" id="825">825</a>
+<a href="#826" id="826">826</a>
+<a href="#827" id="827">827</a>
+<a href="#828" id="828">828</a>
+<a href="#829" id="829">829</a>
+<a href="#830" id="830">830</a>
+<a href="#831" id="831">831</a>
+<a href="#832" id="832">832</a>
+<a href="#833" id="833">833</a>
+<a href="#834" id="834">834</a>
+<a href="#835" id="835">835</a>
+<a href="#836" id="836">836</a>
+<a href="#837" id="837">837</a>
+<a href="#838" id="838">838</a>
+<a href="#839" id="839">839</a>
+<a href="#840" id="840">840</a>
+<a href="#841" id="841">841</a>
+<a href="#842" id="842">842</a>
+<a href="#843" id="843">843</a>
+<a href="#844" id="844">844</a>
+<a href="#845" id="845">845</a>
+<a href="#846" id="846">846</a>
+<a href="#847" id="847">847</a>
+<a href="#848" id="848">848</a>
+<a href="#849" id="849">849</a>
+<a href="#850" id="850">850</a>
+<a href="#851" id="851">851</a>
 </pre></div><pre class="rust"><code><span class="attr">#![feature(slice_concat_trait)]
 #![feature(lazy_cell)]
 #![feature(result_option_inspect)]
@@ -742,20 +862,23 @@
 </span><span class="kw">pub mod </span>agent;
 <span class="kw">pub mod </span>config;
 <span class="kw">pub mod </span>feature;
+<span class="kw">pub mod </span>internal_proxy;
 <span class="kw">pub mod </span>target;
 <span class="kw">pub mod </span>util;
 
 <span class="kw">use </span>std::path::Path;
 
-<span class="kw">use </span>config::{ConfigError, MirrordConfig};
+<span class="kw">use </span>config::{ConfigContext, ConfigError, MirrordConfig};
 <span class="kw">use </span>mirrord_analytics::CollectAnalytics;
 <span class="kw">use </span>mirrord_config_derive::MirrordConfig;
 <span class="kw">use </span>schemars::JsonSchema;
+<span class="kw">use </span>target::Target;
+<span class="kw">use </span>tera::Tera;
 <span class="kw">use </span>tracing::warn;
 
 <span class="kw">use crate</span>::{
     agent::AgentConfig, config::source::MirrordConfigSource, feature::FeatureConfig,
-    target::TargetConfig, util::VecOrSingle,
+    internal_proxy::InternalProxyConfig, target::TargetConfig, util::VecOrSingle,
 };
 
 <span class="kw">const </span>PAUSE_WITHOUT_STEAL_WARNING: <span class="kw-2">&amp;</span>str =
@@ -777,6 +900,10 @@
 /// All of the configuration fields have a default value, so a minimal configuration would be no
 /// configuration at all.
 ///
+/// The configuration supports templating using the [Tera](https://keats.github.io/tera/docs/) template engine.
+/// Currently we don&#39;t provide additional values to the context, if you have anything you want us to
+/// provide please let us know.
+///
 /// To help you get started, here are examples of a basic configuration file, and a complete
 /// configuration file containing all fields.
 ///
@@ -793,8 +920,23 @@
 /// }
 /// ```
 ///
+/// ### Basic `config.json` with templating {#root-basic-templating}
+///
+/// ```json
+/// {
+///   &quot;target&quot;: &quot;{{ get_env(name=&quot;TARGET&quot;, default=&quot;pod/fallback&quot;) }}&quot;,
+///   &quot;feature&quot;: {
+///     &quot;env&quot;: true,
+///     &quot;fs&quot;: &quot;read&quot;,
+///     &quot;network&quot;: true
+///   }
+/// }
+/// ```
+///
 /// ### Complete `config.json` {#root-complete}
 ///
+///  Don&#39;t use this example as a starting point, it&#39;s just here to show you all the available
+///  options.
 /// ```json
 /// {
 ///   &quot;accept_invalid_certificates&quot;: false,
@@ -822,7 +964,7 @@
 ///     &quot;env&quot;: {
 ///       &quot;include&quot;: &quot;DATABASE_USER;PUBLIC_ENV&quot;,
 ///       &quot;exclude&quot;: &quot;DATABASE_PASSWORD;SECRET_ENV&quot;,
-///       &quot;overrides&quot;: {
+///       &quot;override&quot;: {
 ///         &quot;DATABASE_CONNECTION&quot;: &quot;db://localhost:7777/my-db&quot;,
 ///         &quot;LOCAL_BEAR&quot;: &quot;panda&quot;
 ///       }
@@ -853,13 +995,17 @@
 ///         &quot;ignore_localhost&quot;: false,
 ///         &quot;unix_streams&quot;: &quot;bear.+&quot;
 ///       },
-///       &quot;dns&quot;: false
+///       &quot;dns&quot;: false,
+///       &quot;copy_target&quot;: {
+///         &quot;scale_down&quot;: false
+///       }
 ///     },
 ///   },
 ///   &quot;operator&quot;: true,
 ///   &quot;kubeconfig&quot;: &quot;~/.kube/config&quot;,
 ///   &quot;sip_binaries&quot;: &quot;bash&quot;,
-///   &quot;telemetry&quot;: true
+///   &quot;telemetry&quot;: true,
+///   &quot;kube_context&quot;: &quot;my-cluster&quot;
 /// }
 /// ```
 ///
@@ -893,13 +1039,28 @@
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_SKIP_PROCESSES&quot;</span>)]
     </span><span class="kw">pub </span>skip_processes: <span class="prelude-ty">Option</span>&lt;VecOrSingle&lt;String&gt;&gt;,
 
+    <span class="doccomment">/// ## skip_build_tools {#root-skip_build_tools}
+    ///
+    /// Allows mirrord to skip build tools. Useful when running command lines that build and run
+    /// the application in a single command.
+    ///
+    /// Defaults to `true`.
+    ///
+    /// Build-Tools: `[&quot;as&quot;, &quot;cc&quot;, &quot;ld&quot;, &quot;go&quot;, &quot;air&quot;, &quot;asm&quot;, &quot;cc1&quot;, &quot;cgo&quot;, &quot;dlv&quot;, &quot;gcc&quot;, &quot;git&quot;,
+    /// &quot;link&quot;, &quot;math&quot;, &quot;cargo&quot;, &quot;hpack&quot;, &quot;rustc&quot;, &quot;compile&quot;, &quot;collect2&quot;, &quot;cargo-watch&quot;,
+    /// &quot;debugserver&quot;]`
+    </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_SKIP_BUILD_TOOLS&quot;</span>, default = <span class="bool-val">true</span>)]
+    </span><span class="kw">pub </span>skip_build_tools: bool,
+
     <span class="doccomment">/// ## pause {#root-pause}
     /// Controls target pause feature. Unstable.
     ///
     /// With this feature enabled, the remote container is paused while this layer is connected to
     /// the agent.
     ///
-    /// Defaults to `false`.
+    /// Note: It requires agent configuration to be set to privileged when running with the
+    /// ephemeral agent option. Defaults to `false`.
+    /// Note2: Pause + ephemeral might not work on Docker runtimes.
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_PAUSE&quot;</span>, default = <span class="bool-val">false</span>, unstable)]
     </span><span class="kw">pub </span>pause: bool,
 
@@ -914,39 +1075,6 @@
     /// ```
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_CONNECT_TCP&quot;</span>)]
     </span><span class="kw">pub </span>connect_tcp: <span class="prelude-ty">Option</span>&lt;String&gt;,
-
-    <span class="doccomment">/// &lt;!--${internal}--&gt;
-    ///
-    /// ## connect_agent_name {#root-connect_agent_name}
-    ///
-    /// Agent name that already exists that we can connect to.
-    ///
-    /// Keep in mind that the intention here is to allow reusing a long living mirrord-agent pod,
-    /// and **not** to connect multiple (simultaneos) mirrord instances to a single
-    /// mirrord-agent, as the later is not properly supported without the use of
-    /// [mirrord-operator](https://metalbear.co/#waitlist-form).
-    ///
-    /// ```json
-    /// {
-    ///   &quot;connect_agent_name&quot;: &quot;mirrord-agent-still-alive&quot;
-    /// }
-    /// ```
-    </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_CONNECT_AGENT&quot;</span>)]
-    </span><span class="kw">pub </span>connect_agent_name: <span class="prelude-ty">Option</span>&lt;String&gt;,
-
-    <span class="doccomment">/// &lt;!--${internal}--&gt;
-    ///
-    /// ## connect_agent_port {#root-connect_agent_port}
-    ///
-    /// Agent listen port that already exists that we can connect to.
-    ///
-    /// ```json
-    /// {
-    ///   &quot;connect_agent_port&quot;: &quot;8888&quot;
-    /// }
-    /// ```
-    </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_CONNECT_PORT&quot;</span>)]
-    </span><span class="kw">pub </span>connect_agent_port: <span class="prelude-ty">Option</span>&lt;u16&gt;,
 
     <span class="doccomment">/// ## operator {#root-operator}
     ///
@@ -1005,29 +1133,82 @@
     /// [For more information](https://github.com/metalbear-co/mirrord/blob/main/TELEMETRY.md)
     </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_TELEMETRY&quot;</span>, default = <span class="bool-val">true</span>)]
     </span><span class="kw">pub </span>telemetry: bool,
+
+    <span class="doccomment">/// ## kube_context {#root-kube_context}
+    ///
+    /// Kube context to use from the kubeconfig file.
+    /// Will use current context if not specified.
+    ///
+    /// ```json
+    /// {
+    ///  &quot;kube_context&quot;: &quot;mycluster&quot;
+    /// }
+    /// ```
+    </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_KUBE_CONTEXT&quot;</span>)]
+    </span><span class="kw">pub </span>kube_context: <span class="prelude-ty">Option</span>&lt;String&gt;,
+
+    <span class="doccomment">/// # internal_proxy {#root-internal_proxy}
+    </span><span class="attr">#[config(nested)]
+    </span><span class="kw">pub </span>internal_proxy: InternalProxyConfig,
+
+    <span class="doccomment">/// ## use_proxy {#root-use_proxy}
+    ///
+    /// When disabled, mirrord will remove `HTTP[S]_PROXY` env variables before
+    /// doing any network requests. This is useful when the system sets a proxy
+    /// but you don&#39;t want mirrord to use it.
+    /// This also applies to the mirrord process (as it just removes the env).
+    /// If the remote pod sets this env, the mirrord process will still use it.
+    </span><span class="attr">#[config(env = <span class="string">&quot;MIRRORD_PROXY&quot;</span>, default = <span class="bool-val">true</span>)]
+    </span><span class="kw">pub </span>use_proxy: bool,
 }
 
 <span class="kw">impl </span>LayerConfig {
-    <span class="kw">pub fn </span>from_env() -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, ConfigError&gt; {
+    <span class="doccomment">/// Generate a config from the environment variables and/or a config file.
+    /// On success, returns the config and a vec of warnings.
+    /// To be used from CLI to verify config and print warnings
+    </span><span class="kw">pub fn </span>from_env_with_warnings() -&gt; <span class="prelude-ty">Result</span>&lt;(<span class="self">Self</span>, ConfigContext), ConfigError&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>cfg_context = ConfigContext::default();
         <span class="kw">if let </span><span class="prelude-val">Ok</span>(path) = std::env::var(<span class="string">&quot;MIRRORD_CONFIG_FILE&quot;</span>) {
-            LayerFileConfig::from_path(path)<span class="question-mark">?</span>.generate_config()
+            LayerFileConfig::from_path(path)<span class="question-mark">?</span>.generate_config(<span class="kw-2">&amp;mut </span>cfg_context)
         } <span class="kw">else </span>{
-            LayerFileConfig::default().generate_config()
+            LayerFileConfig::default().generate_config(<span class="kw-2">&amp;mut </span>cfg_context)
         }
+        .map(|config| (config, cfg_context))
+    }
+
+    <span class="doccomment">/// Generate a config from the environment variables and/or a config file.
+    /// On success, returns the config.
+    /// To be used from parts that load configuration but aren&#39;t the first one to do so
+    </span><span class="kw">pub fn </span>from_env() -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, ConfigError&gt; {
+        <span class="self">Self</span>::from_env_with_warnings().map(|(config, <span class="kw">_</span>)| config)
     }
 
     <span class="doccomment">/// Verify that there are no conflicting settings.
+    ///
     /// We don&#39;t call it from `from_env` since we want to verify it only once (from cli)
-    </span><span class="kw">pub fn </span>verify(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), ConfigError&gt; {
+    ///
+    /// Fills `context` with the warnings.
+    ///
+    /// - `ide`: Identifies if this is being called from an IDE context, when using
+    /// `mirrord verify-config`. Turns some _target missing_ errors into warnings, as the target can
+    /// be selected after `verify-config` is run.
+    </span><span class="kw">pub fn </span>verify(<span class="kw-2">&amp;</span><span class="self">self</span>, context: <span class="kw-2">&amp;mut </span>ConfigContext) -&gt; <span class="prelude-ty">Result</span>&lt;(), ConfigError&gt; {
         <span class="kw">if </span><span class="self">self</span>.pause {
-            <span class="kw">if </span><span class="self">self</span>.agent.ephemeral {
-                <span class="prelude-val">Err</span>(ConfigError::Conflict(<span class="string">&quot;Pausing is not yet supported together with an ephemeral agent container.
-                Mutually exclusive arguments `--pause` and `--ephemeral-container` passed together.&quot;</span>.to_string()))<span class="question-mark">?</span>;
+            <span class="kw">if </span><span class="self">self</span>.agent.ephemeral &amp;&amp; !<span class="self">self</span>.agent.privileged {
+                context.add_warning(<span class="string">&quot;The target pause feature with ephemeral requires to enable the privileged flag on the agent.&quot;</span>.to_string());
             }
             <span class="kw">if </span>!<span class="self">self</span>.feature.network.incoming.is_steal() {
-                <span class="macro">warn!</span>(<span class="string">&quot;{PAUSE_WITHOUT_STEAL_WARNING}&quot;</span>);
+                context.add_warning(PAUSE_WITHOUT_STEAL_WARNING.to_string());
             }
         }
+
+        <span class="kw">if </span><span class="self">self</span>.agent.ephemeral &amp;&amp; <span class="self">self</span>.agent.namespace.is_some() {
+            context.add_warning(
+                <span class="string">&quot;Agent namespace is ignored when using an ephemeral container for the agent.&quot;
+                    </span>.to_string(),
+            );
+        }
+
         <span class="kw">if </span><span class="self">self
             </span>.feature
             .network
@@ -1045,8 +1226,9 @@
         {
             <span class="prelude-val">Err</span>(ConfigError::Conflict(
                 <span class="string">&quot;Cannot use both HTTP header filter and path filter at the same time&quot;</span>.to_string(),
-            ))<span class="question-mark">?</span>;
-        }
+            ))<span class="question-mark">?
+        </span>}
+
         <span class="kw">if </span><span class="self">self
             </span>.feature
             .network
@@ -1069,26 +1251,77 @@
                     .header_filter
                     .is_some())
         {
-            <span class="prelude-val">Err</span>(ConfigError::Conflict(<span class="string">&quot;Cannot use old http filter and new http filter at the same time. Use only `http_filter` instead of `http_header_filter`&quot;</span>.to_string()))<span class="question-mark">?</span>;
-        }
-        <span class="kw">if </span><span class="self">self</span>.target.path.is_none() {
-            <span class="kw">if </span><span class="self">self</span>.target.namespace.is_some() {
-                <span class="prelude-val">Err</span>(ConfigError::TargetNamespaceWithoutTarget)<span class="question-mark">?</span>;
-            }
+            <span class="prelude-val">Err</span>(ConfigError::Conflict(<span class="string">&quot;Cannot use old http filter and new http filter at the same time. Use only `http_filter` instead of `http_header_filter`&quot;</span>.to_string()))<span class="question-mark">?
+        </span>}
+
+        <span class="kw">if </span><span class="self">self</span>.target.path.is_none() &amp;&amp; !context.ide {
+            <span class="comment">// In the IDE, a target may be selected after `mirrord verify-config` is run, so we
+            // for this case we treat these as warnings. They&#39;ll become errors once mirrord proper
+            // tries to start (if the user somehow managed to not select a target by then).
+            </span><span class="kw">if </span><span class="self">self</span>.target.namespace.is_some() {
+                <span class="prelude-val">Err</span>(ConfigError::TargetNamespaceWithoutTarget)<span class="question-mark">?
+            </span>}
+
             <span class="kw">if </span><span class="self">self</span>.feature.network.incoming.is_steal() {
-                <span class="prelude-val">Err</span>(ConfigError::Conflict(<span class="string">&quot;Steal mode is not compatible with a targetless agent, please either disable this option or specify a target.&quot;</span>.into()))<span class="question-mark">?</span>;
-            }
+                <span class="prelude-val">Err</span>(ConfigError::Conflict(<span class="string">&quot;Steal mode is not compatible with a targetless agent, please either disable this option or specify a target.&quot;</span>.into()))<span class="question-mark">?
+            </span>}
+
             <span class="kw">if </span><span class="self">self</span>.agent.ephemeral {
                 <span class="prelude-val">Err</span>(ConfigError::Conflict(
-                    <span class="string">&quot;Using an ephemeral container for the agent is not compatible with a targetless agent, please either disable this option or specify a target.&quot;</span>.into(),
-                ))<span class="question-mark">?</span>;
-            }
+                    <span class="string">&quot;Using an ephemeral container for the agent is not \
+                         compatible with a targetless agent, please either disable this option or \
+                        specify a target.&quot;
+                        </span>.into(),
+                ))<span class="question-mark">?
+            </span>}
+
             <span class="kw">if </span><span class="self">self</span>.pause {
                 <span class="prelude-val">Err</span>(ConfigError::Conflict(
-                    <span class="string">&quot;The target pause feature is not compatible with a targetless agent, please either disable this option or specify a target.&quot;</span>.into(),
-                ))<span class="question-mark">?</span>;
+                    <span class="string">&quot;The target pause feature is not compatible with a \
+                        targetless agent, please either disable this option or specify a target.&quot;
+                        </span>.into(),
+                ))<span class="question-mark">?
+            </span>}
+        }
+
+        <span class="kw">if </span><span class="self">self</span>.feature.copy_target.enabled {
+            <span class="kw">if </span>!<span class="self">self</span>.operator {
+                <span class="kw">return </span><span class="prelude-val">Err</span>(ConfigError::Conflict(
+                    <span class="string">&quot;The copy target feature requires a mirrord operator, \
+                   please either disable this option or use the operator.&quot;
+                        </span>.into(),
+                ));
+            }
+
+            <span class="kw">if </span><span class="self">self</span>.target.path.is_none() {
+                <span class="kw">return </span><span class="prelude-val">Err</span>(ConfigError::Conflict(
+                    <span class="string">&quot;The copy target feature is not compatible with a targetless agent, \
+                    please either disable this option or specify a target.&quot;
+                        </span>.into(),
+                ));
+            }
+
+            <span class="kw">if </span>!<span class="self">self</span>.feature.network.incoming.is_steal() {
+                context.add_warning(
+                    <span class="string">&quot;Using copy target feature without steal mode \
+                    may result in unreturned responses in cluster \
+                    because the underlying app instance is not copied \
+                    and therefore not running in the copied pod&quot;
+                        </span>.into(),
+                );
+            }
+
+            <span class="kw">if </span><span class="self">self</span>.feature.copy_target.scale_down
+                &amp;&amp; !<span class="macro">matches!</span>(<span class="self">self</span>.target.path, <span class="prelude-val">Some</span>(Target::Deployment(..)))
+            {
+                <span class="kw">return </span><span class="prelude-val">Err</span>(ConfigError::Conflict(
+                    <span class="string">&quot;The scale down feature is compatible only with deployment targets, \
+                    please either disable this option or specify a deployment target.&quot;
+                        </span>.into(),
+                ));
             }
         }
+
         <span class="prelude-val">Ok</span>(())
     }
 }
@@ -1112,13 +1345,14 @@
     <span class="kw">where
         </span>P: AsRef&lt;Path&gt;,
     {
-        <span class="kw">let </span>path = path.as_ref();
-        <span class="kw">let </span>file = std::fs::read(path)<span class="question-mark">?</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>template_engine = Tera::default();
+        template_engine.add_template_file(path.as_ref(), <span class="prelude-val">Some</span>(<span class="string">&quot;main&quot;</span>))<span class="question-mark">?</span>;
+        <span class="kw">let </span>rendered = template_engine.render(<span class="string">&quot;main&quot;</span>, <span class="kw-2">&amp;</span>tera::Context::new())<span class="question-mark">?</span>;
 
-        <span class="kw">match </span>path.extension().and_then(|os_val| os_val.to_str()) {
-            <span class="prelude-val">Some</span>(<span class="string">&quot;json&quot;</span>) =&gt; <span class="prelude-val">Ok</span>(serde_json::from_slice::&lt;<span class="self">Self</span>&gt;(<span class="kw-2">&amp;</span>file[..])<span class="question-mark">?</span>),
-            <span class="prelude-val">Some</span>(<span class="string">&quot;toml&quot;</span>) =&gt; <span class="prelude-val">Ok</span>(toml::from_str::&lt;<span class="self">Self</span>&gt;(<span class="kw-2">&amp;</span>String::from_utf8_lossy(<span class="kw-2">&amp;</span>file))<span class="question-mark">?</span>),
-            <span class="prelude-val">Some</span>(<span class="string">&quot;yaml&quot;</span>) =&gt; <span class="prelude-val">Ok</span>(serde_yaml::from_slice::&lt;<span class="self">Self</span>&gt;(<span class="kw-2">&amp;</span>file[..])<span class="question-mark">?</span>),
+        <span class="kw">match </span>path.as_ref().extension().and_then(|os_val| os_val.to_str()) {
+            <span class="prelude-val">Some</span>(<span class="string">&quot;json&quot;</span>) =&gt; <span class="prelude-val">Ok</span>(serde_json::from_str::&lt;<span class="self">Self</span>&gt;(<span class="kw-2">&amp;</span>rendered)<span class="question-mark">?</span>),
+            <span class="prelude-val">Some</span>(<span class="string">&quot;toml&quot;</span>) =&gt; <span class="prelude-val">Ok</span>(toml::from_str::&lt;<span class="self">Self</span>&gt;(<span class="kw-2">&amp;</span>rendered)<span class="question-mark">?</span>),
+            <span class="prelude-val">Some</span>(<span class="string">&quot;yaml&quot; </span>| <span class="string">&quot;yml&quot;</span>) =&gt; <span class="prelude-val">Ok</span>(serde_yaml::from_str::&lt;<span class="self">Self</span>&gt;(<span class="kw-2">&amp;</span>rendered)<span class="question-mark">?</span>),
             <span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(ConfigError::UnsupportedFormat),
         }
     }
@@ -1311,8 +1545,6 @@
             pause: <span class="prelude-val">Some</span>(<span class="bool-val">false</span>),
             kubeconfig: <span class="prelude-val">None</span>,
             telemetry: <span class="prelude-val">None</span>,
-            connect_agent_name: <span class="prelude-val">None</span>,
-            connect_agent_port: <span class="prelude-val">None</span>,
             target: <span class="prelude-val">Some</span>(TargetFileConfig::Advanced {
                 path: <span class="prelude-val">Some</span>(Target::Pod(PodTarget {
                     pod: <span class="string">&quot;test-service-abcdefg-abcd&quot;</span>.to_owned(),
@@ -1321,7 +1553,9 @@
                 namespace: <span class="prelude-val">Some</span>(<span class="string">&quot;default&quot;</span>.to_owned()),
             }),
             skip_processes: <span class="prelude-val">None</span>,
+            skip_build_tools: <span class="prelude-val">None</span>,
             agent: <span class="prelude-val">Some</span>(AgentFileConfig {
+                privileged: <span class="prelude-val">None</span>,
                 log_level: <span class="prelude-val">Some</span>(<span class="string">&quot;info&quot;</span>.to_owned()),
                 namespace: <span class="prelude-val">Some</span>(<span class="string">&quot;default&quot;</span>.to_owned()),
                 image: <span class="prelude-val">Some</span>(<span class="string">&quot;&quot;</span>.to_owned()),
@@ -1338,6 +1572,8 @@
                 flush_connections: <span class="prelude-val">Some</span>(<span class="bool-val">false</span>),
                 disabled_capabilities: <span class="prelude-val">None</span>,
                 tolerations: <span class="prelude-val">None</span>,
+                check_out_of_pods: <span class="prelude-val">None</span>,
+                resources: <span class="prelude-val">None</span>,
             }),
             feature: <span class="prelude-val">Some</span>(FeatureFileConfig {
                 env: ToggleableConfig::Enabled(<span class="bool-val">true</span>).into(),
@@ -1362,10 +1598,14 @@
                         ..Default::default()
                     })),
                 })),
+                copy_target: <span class="prelude-val">None</span>,
             }),
             connect_tcp: <span class="prelude-val">None</span>,
             operator: <span class="prelude-val">None</span>,
             sip_binaries: <span class="prelude-val">None</span>,
+            kube_context: <span class="prelude-val">None</span>,
+            internal_proxy: <span class="prelude-val">None</span>,
+            use_proxy: <span class="prelude-val">None</span>,
         };
 
         <span class="macro">assert_eq!</span>(config, expect);

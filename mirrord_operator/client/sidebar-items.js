@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["BRANCHES","MIRRORD_OPERATOR_SESSION"],"enum":["OperatorApiError"],"static":["CALLSITE","CONNECTION_CHANNEL_SIZE"],"struct":["ConnectionWrapper","OperatorApi","OperatorSessionInformation"],"type":["Result"]};
+window.SIDEBAR_ITEMS = {"enum":["ConnectionWrapperError","OperatorApiError","OperatorSessionTarget"],"static":["CONNECTION_CHANNEL_SIZE"],"struct":["ConnectionWrapper","HttpError","OperatorApi","OperatorSessionConnection","OperatorSessionInformation","OperatorSessionMetadata"],"type":["Result"]};
